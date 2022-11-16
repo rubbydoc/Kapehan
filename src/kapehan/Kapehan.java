@@ -15,6 +15,9 @@ public class Kapehan {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        LandingPage lp = new LandingPage();
+        lp.setVisible(true);
+        
     }
     
 }
