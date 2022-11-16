@@ -35,22 +35,20 @@ public class LandingPage extends javax.swing.JFrame {
     private void initComponents() {
 
         body = new javax.swing.JPanel();
-        phone = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         getStarted = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        phone = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ea7a08282f40760a5989ba022d6f0480-removebg-preview.png"))); // NOI18N
-        body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 325, 607));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo-170x170.png"))); // NOI18N
         logo.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -60,8 +58,6 @@ public class LandingPage extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(168, 104, 11));
         jLabel4.setText("Coffee");
-
-        jLabel5.setText("at One Finger Tap");
 
         getStarted.setBackground(new java.awt.Color(52, 32, 0));
         getStarted.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -77,40 +73,60 @@ public class LandingPage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(getStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+        jLabel5.setText("at One Finger Tap");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(jLabel5)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(getStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(getStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addContainerGap())
+        );
+
+        body.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
+
+        phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ea7a08282f40760a5989ba022d6f0480-removebg-preview.png"))); // NOI18N
+        body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 325, 607));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
 
         body.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 240, 510));
@@ -119,7 +135,7 @@ public class LandingPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +150,7 @@ public class LandingPage extends javax.swing.JFrame {
 
     private void getStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedActionPerformed
        this.dispose();
-       new page2().setVisible(true);
+       new SignIn().setVisible(true);
     }//GEN-LAST:event_getStartedActionPerformed
 
     /**
@@ -180,6 +196,7 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel phone;
     // End of variables declaration//GEN-END:variables
