@@ -156,6 +156,9 @@
                 </Property>
                 <Property name="focusPainted" type="boolean" value="false"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="SignIn_signIn"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="logo">
               <Properties>
