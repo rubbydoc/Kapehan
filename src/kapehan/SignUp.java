@@ -70,7 +70,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel2.setText("Register new account");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel5.setForeground(new java.awt.Color(52, 32, 0));
         jLabel5.setText("Sign In");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
