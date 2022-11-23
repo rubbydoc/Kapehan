@@ -189,9 +189,9 @@ public class SignIn extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.dispose();
-        new Cart().setVisible(true);
+        new SignUp().setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
-//SignUp
+
     /**
      * @param args the command line arguments
      */
