@@ -62,6 +62,11 @@ public class SignIn extends javax.swing.JFrame {
         signIn.setBorder(null);
         signIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signIn.setFocusPainted(false);
+        signIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInActionPerformed(evt);
+            }
+        });
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo-102x102(2).png"))); // NOI18N
 
@@ -191,6 +196,11 @@ public class SignIn extends javax.swing.JFrame {
         this.dispose();
         new SignUp().setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
+      this.dispose();
+      new Home().setVisible(true);
+    }//GEN-LAST:event_signInActionPerformed
 
     /**
      * @param args the command line arguments
