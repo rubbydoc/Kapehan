@@ -53,6 +53,11 @@ public class ProductInfo extends javax.swing.JFrame {
         minus = new javax.swing.JLabel();
         add = new javax.swing.JLabel();
         qty = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        getStarted = new javax.swing.JButton();
+        getStarted1 = new javax.swing.JButton();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -91,16 +96,17 @@ public class ProductInfo extends javax.swing.JFrame {
         jLabel4.setText("$100.00");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
         jLabel5.setText("<html>Lorem ipsum dolor sit amet consectetur. Et habitasse eu sit ut.</html>");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Size");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 335, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Quantity");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 30));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, -1, 30));
 
         minus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minus (2).png"))); // NOI18N
         minus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -109,7 +115,7 @@ public class ProductInfo extends javax.swing.JFrame {
                 minusMouseClicked(evt);
             }
         });
-        jPanel3.add(minus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+        jPanel3.add(minus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
         add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add (2).png"))); // NOI18N
         add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,11 +124,54 @@ public class ProductInfo extends javax.swing.JFrame {
                 addMouseClicked(evt);
             }
         });
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, -1, -1));
 
         qty.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         qty.setText("0");
-        jPanel3.add(qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
+        jPanel3.add(qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Short", "Tall", "Grande", "Venti" }));
+        jComboBox1.setSelectedIndex(-1);
+        jComboBox1.setBorder(null);
+        jComboBox1.setFocusable(false);
+        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 330, 110, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Total");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 405, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("$100.00");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 405, -1, -1));
+
+        getStarted.setBackground(new java.awt.Color(52, 32, 0));
+        getStarted.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        getStarted.setForeground(new java.awt.Color(255, 255, 255));
+        getStarted.setText("Checkout");
+        getStarted.setBorder(null);
+        getStarted.setBorderPainted(false);
+        getStarted.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getStarted.setFocusPainted(false);
+        getStarted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getStartedActionPerformed(evt);
+            }
+        });
+        jPanel3.add(getStarted, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 100, 25));
+
+        getStarted1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        getStarted1.setForeground(new java.awt.Color(52, 32, 0));
+        getStarted1.setText("Add to Cart");
+        getStarted1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        getStarted1.setContentAreaFilled(false);
+        getStarted1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getStarted1.setFocusPainted(false);
+        getStarted1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getStarted1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(getStarted1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 100, 25));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -152,9 +201,7 @@ public class ProductInfo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,6 +233,14 @@ public class ProductInfo extends javax.swing.JFrame {
         qtyCounter++;
         qty.setText(String.valueOf(qtyCounter));
     }//GEN-LAST:event_addMouseClicked
+
+    private void getStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedActionPerformed
+       
+    }//GEN-LAST:event_getStartedActionPerformed
+
+    private void getStarted1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStarted1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_getStarted1ActionPerformed
 
    
     /**
@@ -241,11 +296,16 @@ public class ProductInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;
     private javax.swing.JPanel body;
+    private javax.swing.JButton getStarted;
+    private javax.swing.JButton getStarted1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
