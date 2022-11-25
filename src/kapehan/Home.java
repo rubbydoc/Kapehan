@@ -20,13 +20,14 @@ public class Home extends javax.swing.JFrame {
      */
     static String imgSource;
     static String productName;
+    static int numcart;
     public Home() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
         
-        cartNum.setText(String.valueOf(new ProductInfo().getQtyCounter()));
+        cartNum.setText(String.valueOf(numcart));
       
     }
 
@@ -36,6 +37,14 @@ public class Home extends javax.swing.JFrame {
     
     public static String getProductName(){
     return productName;
+    }
+    
+    public void setNumCart(int numcart){
+        this.numcart=numcart;
+    }
+    
+    public static int getNumCart(){
+    return numcart;
     }
     
     /**
