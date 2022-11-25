@@ -7,6 +7,7 @@ package kapehan;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 
 /**
@@ -44,6 +45,8 @@ public class ProductInfo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        cartNum = new javax.swing.JLabel();
+        cart = new javax.swing.JLabel();
         target = new javax.swing.JLabel();
         prodName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -87,6 +90,16 @@ public class ProductInfo extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        cartNum.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cartNum.setForeground(new java.awt.Color(255, 255, 255));
+        cartNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartNum.setText("0");
+        jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 25, 20, 20));
+
+        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/noti-40.png"))); // NOI18N
+        cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 5, -1, -1));
         jPanel3.add(target, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, -1));
 
         prodName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -239,7 +252,9 @@ public class ProductInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_getStartedActionPerformed
 
     private void getStarted1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStarted1ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Added to cart.","I love Coffee!", JOptionPane.PLAIN_MESSAGE);
+        cartNum.setText(String.valueOf(qtyCounter));
+       
     }//GEN-LAST:event_getStarted1ActionPerformed
 
    
@@ -296,6 +311,8 @@ public class ProductInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;
     private javax.swing.JPanel body;
+    private javax.swing.JLabel cart;
+    private javax.swing.JLabel cartNum;
     private javax.swing.JButton getStarted;
     private javax.swing.JButton getStarted1;
     private javax.swing.JComboBox<String> jComboBox1;
