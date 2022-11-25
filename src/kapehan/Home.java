@@ -17,6 +17,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form page2
      */
+    static String imgSource;
     public Home() {
         setUndecorated(true);
         initComponents();
@@ -24,6 +25,9 @@ public class Home extends javax.swing.JFrame {
         body.setBackground(new Color(0, 0, 0, 0));
     }
 
+    public static String getImgSource(){
+    return imgSource;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,6 +130,11 @@ public class Home extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Caffè Americano-80x80.jpg"))); // NOI18N
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, -1));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,6 +151,11 @@ public class Home extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Caffè Misto.jpg"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
@@ -346,6 +360,26 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
 
+ 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+
+       imgSource="/img/Caffè Americano-220x220.png";
+  
+        this.setVisible(false);
+        new ProductInfo().setVisible(true);
+                
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+       imgSource="/img/Caffè Misto.jpg";
+  
+        this.setVisible(false);
+        new ProductInfo().setVisible(true);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -431,4 +465,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel searchButton;
     private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
+
+    
 }
