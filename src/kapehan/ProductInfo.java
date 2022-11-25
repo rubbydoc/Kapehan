@@ -18,7 +18,7 @@ public class ProductInfo extends javax.swing.JFrame {
     /**
      * Creates new form page2
      */
-   
+    int qtyCounter=0;
     public ProductInfo() {
         setUndecorated(true);
         initComponents();
@@ -48,6 +48,11 @@ public class ProductInfo extends javax.swing.JFrame {
         prodName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        minus = new javax.swing.JLabel();
+        add = new javax.swing.JLabel();
+        qty = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -88,6 +93,36 @@ public class ProductInfo extends javax.swing.JFrame {
 
         jLabel5.setText("<html>Lorem ipsum dolor sit amet consectetur. Et habitasse eu sit ut.</html>");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Size");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Quantity");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 30));
+
+        minus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minus (2).png"))); // NOI18N
+        minus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minusMouseClicked(evt);
+            }
+        });
+        jPanel3.add(minus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add (2).png"))); // NOI18N
+        add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+        });
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
+
+        qty.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        qty.setText("0");
+        jPanel3.add(qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -136,6 +171,21 @@ public class ProductInfo extends javax.swing.JFrame {
         this.dispose();
         new Home().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void minusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusMouseClicked
+        String currentVal = qty.getText();
+        if(currentVal.equals("0")){
+        } else{
+         qtyCounter--;
+         qty.setText(String.valueOf(qtyCounter));
+         
+        }
+    }//GEN-LAST:event_minusMouseClicked
+
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        qtyCounter++;
+        qty.setText(String.valueOf(qtyCounter));
+    }//GEN-LAST:event_addMouseClicked
 
    
     /**
@@ -189,15 +239,20 @@ public class ProductInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel add;
     private javax.swing.JPanel body;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel minus;
     private javax.swing.JLabel phone;
     private javax.swing.JLabel prodName;
+    private javax.swing.JLabel qty;
     private javax.swing.JLabel target;
     // End of variables declaration//GEN-END:variables
 }
