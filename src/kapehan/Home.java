@@ -18,6 +18,7 @@ public class Home extends javax.swing.JFrame {
      * Creates new form page2
      */
     static String imgSource;
+    static String productName;
     public Home() {
         setUndecorated(true);
         initComponents();
@@ -27,6 +28,10 @@ public class Home extends javax.swing.JFrame {
 
     public static String getImgSource(){
     return imgSource;
+    }
+    
+    public static String getProductName(){
+    return productName;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -364,6 +369,7 @@ public class Home extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
        imgSource="/img/Caffè Americano-220x220.png";
+       productName = "Caffè Americano";
   
         this.setVisible(false);
         new ProductInfo().setVisible(true);
@@ -371,7 +377,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-       imgSource="/img/Caffè Misto.jpg";
+       imgSource="/img/Caffe Misto-220x220.png";
+       productName = "Caffè Misto";
   
         this.setVisible(false);
         new ProductInfo().setVisible(true);

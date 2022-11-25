@@ -28,7 +28,7 @@ public class ProductInfo extends javax.swing.JFrame {
  
        
         target.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Home().getImgSource())));
-        
+        prodName.setText(new Home().getProductName());
     }
 
     /**
@@ -45,7 +45,7 @@ public class ProductInfo extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         target = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        prodName = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
@@ -79,9 +79,8 @@ public class ProductInfo extends javax.swing.JFrame {
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         jPanel3.add(target, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Caffè Americano");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        prodName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel3.add(prodName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("$100.00");
@@ -192,13 +191,13 @@ public class ProductInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
+    private javax.swing.JLabel prodName;
     private javax.swing.JLabel target;
     // End of variables declaration//GEN-END:variables
 }
