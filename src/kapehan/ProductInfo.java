@@ -19,7 +19,7 @@ public class ProductInfo extends javax.swing.JFrame {
     /**
      * Creates new form page2
      */
-    int qtyCounter=0;
+    static int qtyCounter;
     public ProductInfo() {
         setUndecorated(true);
         initComponents();
@@ -30,6 +30,10 @@ public class ProductInfo extends javax.swing.JFrame {
        
         target.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Home().getImgSource())));
         prodName.setText(new Home().getProductName());
+    }
+    
+    public static int getQtyCounter(){
+    return qtyCounter;
     }
 
     /**
@@ -228,7 +232,8 @@ public class ProductInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.dispose();
+        this.setVisible(false);
+        
         new Home().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
