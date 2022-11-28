@@ -66,6 +66,11 @@ public class SignUp extends javax.swing.JFrame {
         signIn.setBorder(null);
         signIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signIn.setFocusPainted(false);
+        signIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Register new account");
 
@@ -215,6 +220,10 @@ public class SignUp extends javax.swing.JFrame {
        new SignIn().setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signInActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -252,7 +261,7 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
     }
-
+//SignUp
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JTextField email;
