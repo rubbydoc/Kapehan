@@ -94,6 +94,7 @@ public class Products extends javax.swing.JFrame {
                 return true;
             }
         }
+    
     Connection Con = null;
     Statement st = null;
     Resultset rs = null;
