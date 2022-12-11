@@ -129,6 +129,11 @@ public class Home extends javax.swing.JFrame {
 
         cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/noti-40.png"))); // NOI18N
         cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartMouseClicked(evt);
+            }
+        });
         jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 0, 49, -1));
 
         searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
@@ -360,6 +365,11 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
         new ProductInfo().setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
+        this.setVisible(false);
+        new Cart().setVisible(true);
+    }//GEN-LAST:event_cartMouseClicked
 
     
     

@@ -13,7 +13,7 @@ import javax.swing.JScrollBar;
  *
  * @author Student.Admin
  */
-public class Cart extends javax.swing.JFrame {
+public class Checkout extends javax.swing.JFrame {
 
     /**
      * Creates new form page2
@@ -21,7 +21,7 @@ public class Cart extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
-    public Cart() {
+    public Checkout() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
@@ -60,25 +60,25 @@ public class Cart extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         cartNum = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        backButton = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        applyCoupon = new javax.swing.JButton();
+        pickup = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        checkout = new javax.swing.JButton();
+        pay = new javax.swing.JButton();
+        delivery = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -106,114 +106,124 @@ public class Cart extends javax.swing.JFrame {
         cartNum.setText("0");
         jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 20, 20));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 104, 11), 1, true));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Caffè Americano-80x80.jpg"))); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arrow-small-left.png"))); // NOI18N
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                backButtonMouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, -1));
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel13.setText("Caffè Americano");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 5, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel14.setText("$100.00");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel3.setText("Tall");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 25, 20, 10));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 55, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minus.png"))); // NOI18N
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 55, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("10");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 55, -1, -1));
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 200, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arrow-small-left.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        jPanel3.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("My Cart");
+        jLabel2.setText("Checkout");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
-        applyCoupon.setBackground(new java.awt.Color(52, 32, 0));
-        applyCoupon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        applyCoupon.setForeground(new java.awt.Color(255, 255, 255));
-        applyCoupon.setText("Apply");
-        applyCoupon.setBorder(null);
-        applyCoupon.setBorderPainted(false);
-        applyCoupon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        applyCoupon.setFocusPainted(false);
-        applyCoupon.addActionListener(new java.awt.event.ActionListener() {
+        pickup.setBackground(new java.awt.Color(52, 32, 0));
+        pickup.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pickup.setForeground(new java.awt.Color(255, 255, 255));
+        pickup.setText("Pickup");
+        pickup.setBorder(null);
+        pickup.setBorderPainted(false);
+        pickup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pickup.setFocusPainted(false);
+        pickup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applyCouponActionPerformed(evt);
+                pickupActionPerformed(evt);
             }
         });
-        jPanel3.add(applyCoupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 50, 30));
+        jPanel3.add(pickup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 100, 30));
 
+        searchField.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        searchField.setText("Samjung Bldg. Nasipit Road, Talamban");
         searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        searchField.setEnabled(false);
         searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFieldActionPerformed(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 150, 30));
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 200, 30));
 
-        jLabel8.setText("Items");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel9.setText("Discount");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Total");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel11.setText("$1000.00");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
 
-        jLabel12.setText("$10.00");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel12.setText("$1000.00");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("$900.00");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 290, -1, -1));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
 
-        checkout.setBackground(new java.awt.Color(52, 32, 0));
-        checkout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        checkout.setForeground(new java.awt.Color(255, 255, 255));
-        checkout.setText("Checkout");
-        checkout.setBorder(null);
-        checkout.setBorderPainted(false);
-        checkout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        checkout.setFocusPainted(false);
-        checkout.addActionListener(new java.awt.event.ActionListener() {
+        pay.setBackground(new java.awt.Color(52, 32, 0));
+        pay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pay.setForeground(new java.awt.Color(255, 255, 255));
+        pay.setText("Pay");
+        pay.setBorder(null);
+        pay.setBorderPainted(false);
+        pay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pay.setFocusPainted(false);
+        pay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkoutActionPerformed(evt);
+                payActionPerformed(evt);
             }
         });
-        jPanel3.add(checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 160, 25));
+        jPanel3.add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 160, 25));
+
+        delivery.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        delivery.setForeground(new java.awt.Color(52, 32, 0));
+        delivery.setText("Delivery");
+        delivery.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 32, 0)));
+        delivery.setContentAreaFilled(false);
+        delivery.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        delivery.setFocusPainted(false);
+        delivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliveryActionPerformed(evt);
+            }
+        });
+        jPanel3.add(delivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 100, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Shop Address");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Payment Mehod");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash on Pickup", "Credit Card" }));
+        jComboBox1.setSelectedIndex(-1);
+        jComboBox1.setBorder(null);
+        jComboBox1.setFocusable(false);
+        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Summary Items");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel5.setText("10x Tall Iced Latte");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 273, 200, 10));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel6.setText("Sub total");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel13.setText("$10.00");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -259,33 +269,27 @@ public class Cart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
  
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void pickupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickupActionPerformed
 
-       imgSource="/img/Caffè Americano-220x220.png";
-       productName = "Caffè Americano";
-  
-        this.setVisible(false);
-        new ProductInfo().setVisible(true);
-                
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void applyCouponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCouponActionPerformed
-
-    }//GEN-LAST:event_applyCouponActionPerformed
+    }//GEN-LAST:event_pickupActionPerformed
 
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
 
-    private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
-        this.setVisible(false);
-        new Checkout().setVisible(true);
-    }//GEN-LAST:event_checkoutActionPerformed
+    private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-       this.setVisible(false);
-       new Home().setVisible(true);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_payActionPerformed
+
+    private void deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryActionPerformed
+       
+
+    }//GEN-LAST:event_deliveryActionPerformed
+
+    private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
+        this.setVisible(false);
+        new Home().setVisible(true);
+    }//GEN-LAST:event_backButtonMouseClicked
 
     
     
@@ -307,14 +311,30 @@ public class Cart extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -335,36 +355,36 @@ public class Cart extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cart().setVisible(true);
+                new Checkout().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton applyCoupon;
+    private javax.swing.JLabel backButton;
     private javax.swing.JPanel body;
     private static javax.swing.JLabel cartNum;
-    private javax.swing.JButton checkout;
+    private javax.swing.JButton delivery;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton pay;
     private javax.swing.JLabel phone;
+    private javax.swing.JButton pickup;
     private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 
