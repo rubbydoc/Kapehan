@@ -72,6 +72,10 @@ public class Home extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        price1 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -93,29 +97,29 @@ public class Home extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cartNum.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cartNum.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cartNum.setForeground(new java.awt.Color(255, 255, 255));
         cartNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartNum.setText("0");
-        jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 20, 20));
+        jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 12, 40, 50));
 
-        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
+        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user (1).png"))); // NOI18N
         profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileMouseClicked(evt);
             }
         });
-        jPanel3.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        jPanel3.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/noti-40.png"))); // NOI18N
+        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cart (50 × 50 px).png"))); // NOI18N
         cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartMouseClicked(evt);
             }
         });
-        jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 0, 49, -1));
+        jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 49, -1));
 
         searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         searchField.addActionListener(new java.awt.event.ActionListener() {
@@ -123,27 +127,27 @@ public class Home extends javax.swing.JFrame {
                 searchFieldActionPerformed(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 64, 149, -1));
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 270, 40));
 
-        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search (2).png"))); // NOI18N
         searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 64, -1, -1));
+        jPanel3.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
-        filter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/filter.png"))); // NOI18N
+        filter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/filter (1).png"))); // NOI18N
         filter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 64, -1, -1));
+        jPanel3.add(filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setText("Categories");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 100, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
-        hot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hot.png"))); // NOI18N
+        hot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/category.png"))); // NOI18N
         hot.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(hot, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 137, -1, -1));
+        jPanel3.add(hot, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
-        ice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cold.png"))); // NOI18N
+        ice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/category (1).png"))); // NOI18N
         ice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(ice, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 137, -1, -1));
+        jPanel3.add(ice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 104, 11), 1, true));
@@ -156,18 +160,42 @@ public class Home extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 190, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, -1));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel13.setText("Caffè Americano");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 180, -1));
 
-        price.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        price.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         price.setText("$100.00");
-        jPanel2.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+        jPanel2.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 236, 370, -1));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 160, 230));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 104, 11), 1, true));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Caffè Americano(160 × 160 px).png"))); // NOI18N
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, -1));
+
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel14.setText("Caffè Americano");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 180, -1));
+
+        price1.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        price1.setText("$100.00");
+        jPanel4.add(price1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 160, 230));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -237,6 +265,10 @@ public class Home extends javax.swing.JFrame {
         new Account().setVisible(true);
     }//GEN-LAST:event_profileMouseClicked
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     
     
     
@@ -290,14 +322,18 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel hot;
     private javax.swing.JLabel ice;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
     private javax.swing.JLabel price;
+    private javax.swing.JLabel price1;
     private javax.swing.JLabel profile;
     private javax.swing.JLabel searchButton;
     private javax.swing.JTextField searchField;
