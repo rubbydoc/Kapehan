@@ -38,6 +38,8 @@ public class Home extends javax.swing.JFrame {
      */
     static String imgSource;
     static String productName;
+    static String productDes;
+    static String productPrice;
     static int numcart;
     Connect c = new Connect();
 
@@ -58,6 +60,13 @@ public class Home extends javax.swing.JFrame {
 
     public static String getProductName() {
         return productName;
+    }
+    public static String getProductDescription(){
+    return productDes;
+    }
+    
+    public static String getProductPrice(){
+    return productPrice;
     }
 
     public void setNumCart(int numcart) {
@@ -232,13 +241,14 @@ public class Home extends javax.swing.JFrame {
             while (rs.next()) {
                 String productName = rs.getString(2);
                 String productPrice = rs.getString(4);
+                String des = rs.getString(3);
 
                 if (rs.getInt(1) % 2 == 1) {
-                    columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png");
+                    columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png",des);
                     i += 250;
                 } else {
 
-                    columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png");
+                    columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png",des);
                     l += 250;
 
                 }
@@ -251,7 +261,7 @@ public class Home extends javax.swing.JFrame {
 
     }
 
-    public void columnOne(String name, String price, int y, String imgsource) {
+    public void columnOne(String name, String price, int y, String imgsource, String description) {
         JPanel panel = new JPanel();
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -288,8 +298,10 @@ public class Home extends javax.swing.JFrame {
         img.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 
-                imgSource = "/img/coffee/" + name + ".png";
+                imgSource = "/img/coffee/" + name+"_info" + ".png";
                 productName = name;
+                productDes = description;
+                productPrice = price;
 
                 new Home().setVisible(false);
                 new ProductInfo().setVisible(true);
@@ -301,7 +313,7 @@ public class Home extends javax.swing.JFrame {
 
     }
 
-    public void columnTwo(String name, String price, int x, int y, String imgsource) {
+    public void columnTwo(String name, String price, int x, int y, String imgsource, String description) {
         JPanel panel = new JPanel();
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -336,8 +348,10 @@ public class Home extends javax.swing.JFrame {
 
         img.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgSource = "/img/coffee/" + name + ".png";
+                imgSource = "/img/coffee/" + name + "_info" + ".png";
                 productName = name;
+                productDes = description;
+                productPrice = price;
 
                 new Home().setVisible(false);
                 new ProductInfo().setVisible(true);
