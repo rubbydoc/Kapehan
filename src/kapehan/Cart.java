@@ -8,6 +8,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -21,32 +28,32 @@ public class Cart extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
+    Connect c = new Connect();
+
     public Cart() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
-        
-       
-      
+
     }
 
-    public static String getImgSource(){
-    return imgSource;
+    public static String getImgSource() {
+        return imgSource;
     }
-    
-    public static String getProductName(){
-    return productName;
+
+    public static String getProductName() {
+        return productName;
     }
-    
-    public void setNumCart(int numcart){
-        this.numcart=numcart;
+
+    public void setNumCart(int numcart) {
+        this.numcart = numcart;
     }
-    
-    public static int getNumCart(){
-    return numcart;
+
+    public static int getNumCart() {
+        return numcart;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,17 +68,17 @@ public class Cart extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        product = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
+        size = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         applyCoupon = new javax.swing.JButton();
-        searchField = new javax.swing.JTextField();
+        coupon = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        items = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         checkout = new javax.swing.JButton();
@@ -79,6 +86,11 @@ public class Cart extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
 
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -100,28 +112,29 @@ public class Cart extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 104, 11), 1, true));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/coffee/Caffe Americano.png"))); // NOI18N
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 90, 130));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, 130));
 
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel13.setText("Caffè Americano");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        product.setBackground(new java.awt.Color(255, 255, 255));
+        product.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        product.setText("Caffè Americano");
+        jPanel2.add(product, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel14.setText("$100.00");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+        price.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        price.setText("$100.00");
+        jPanel2.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Tall");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 45, 30, 20));
+        size.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        size.setText("Tall");
+        jPanel2.add(size, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 45, 30, 20));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 360, 130));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 360, 130));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arrow-small-left.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,39 +162,39 @@ public class Cart extends javax.swing.JFrame {
                 applyCouponActionPerformed(evt);
             }
         });
-        jPanel3.add(applyCoupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 90, 40));
+        jPanel3.add(applyCoupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 90, 40));
 
-        searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        searchField.addActionListener(new java.awt.event.ActionListener() {
+        coupon.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        coupon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
+                couponActionPerformed(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 270, 40));
+        jPanel3.add(coupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 270, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Items");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Discount");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Total");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setText("$1000.00");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
+        items.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        items.setText("$1000.00");
+        jPanel3.add(items, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 600, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("$10.00");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 630, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel15.setText("$900.00");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, -1, -1));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 660, -1, -1));
 
         checkout.setBackground(new java.awt.Color(52, 32, 0));
         checkout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -226,9 +239,7 @@ public class Cart extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,24 +252,42 @@ public class Cart extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
- 
+
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
-       imgSource="/img/Caffè Americano-220x220.png";
-       productName = "Caffè Americano";
-  
-        this.setVisible(false);
-        new ProductInfo().setVisible(true);
-                
+
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void applyCouponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCouponActionPerformed
 
+        String couponField = coupon.getText();
+        boolean isValid = false;
+        try {
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from coupon");
+
+            while (rs.next()) {
+                String couponCode = rs.getString(2);
+                if (couponField.equals(couponCode)) {
+                    isValid = true;
+
+                } else {
+                    isValid = false;
+                }
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+
     }//GEN-LAST:event_applyCouponActionPerformed
 
-    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+    private void couponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couponActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchFieldActionPerformed
+    }//GEN-LAST:event_couponActionPerformed
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
         this.setVisible(false);
@@ -266,13 +295,98 @@ public class Cart extends javax.swing.JFrame {
     }//GEN-LAST:event_checkoutActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-       this.setVisible(false);
-       new Home().setVisible(true);
+        this.setVisible(false);
+        new Home().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    
-    
-    
+    public void displayCart() {
+        try {
+            int i = 80;
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from cart");
+
+            while (rs.next()) {
+                String product = rs.getString(2);
+                String size = rs.getString(3);
+                String price = rs.getString(4);
+                String discount = rs.getString(5);
+                String qty = rs.getString(6);
+
+                displayPanel(product, size, price, "/img/coffee/" + product + ".png", i);
+                i += 160;
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        try {
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select Sum(price) as sumItems from cart");
+
+            while (rs.next()) {
+                String sum = rs.getString("sumItems");
+                items.setText(sum);
+             
+            }
+            c.connect().close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+    }
+
+    public void displayPanel(String product, String size, String price, String imgsource, int y) {
+        JPanel panel = new javax.swing.JPanel();
+
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+
+        panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 104, 11), 1, true));
+
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y, 360, 130));
+        JLabel label = new javax.swing.JLabel();
+
+        label.setBackground(new java.awt.Color(255, 255, 255));
+
+        label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        label.setText(product);
+
+        panel.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        JLabel sizeLabel = new javax.swing.JLabel();
+
+        sizeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        sizeLabel.setText(size);
+
+        panel.add(sizeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 45, 30, 20));
+
+        JLabel priceLabel = new javax.swing.JLabel();
+
+        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        priceLabel.setText("$" + price);
+
+        panel.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+        JLabel img = new javax.swing.JLabel();
+
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource(imgsource))); // NOI18N
+
+        img.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        panel.add(img, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, 130));
+
+    }
+
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -327,15 +441,13 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JButton applyCoupon;
     private javax.swing.JPanel body;
     private javax.swing.JButton checkout;
+    private javax.swing.JTextField coupon;
+    private javax.swing.JLabel items;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -344,8 +456,9 @@ public class Cart extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
-    private javax.swing.JTextField searchField;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel product;
+    private javax.swing.JLabel size;
     // End of variables declaration//GEN-END:variables
 
-    
 }
