@@ -27,12 +27,13 @@ public class Products extends javax.swing.JFrame {
     /**
      * Creates new form Products
      */
+    Connect c = new Connect();
     public Products() {
         initComponents();
         ShowProducts();
     }
-    
-    public void deletetotransactions(){
+
+    public void deletetotransactions() {
         String p = pname.getText();
         String d = desc.getText();
         Integer q = Integer.valueOf(quantity.getText().trim());
@@ -41,40 +42,36 @@ public class Products extends javax.swing.JFrame {
         String s = stat.getSelectedItem().toString();
         String delete = "Deleted a product";
 
-        
         PreparedStatement ps;
         String query = "INSERT INTO `products`( `productName`, `description`, `quantity`, `price`, `category`, `status`) VALUES (?,?,?,?,?,?)";
-        
+
         try {
 
-                    ps = sqlconnection.getConnection().prepareStatement(query);
-                    ps.setString(1, p);
-                    ps.setString(2, d);
-                    ps.setInt(3, q);
-                    ps.setInt(4, pr);
-                    ps.setString(5, c);
-                    ps.setString(6, s);
-                  
-             
-                    
-                    if (ps.executeUpdate() != 0 ) {
-                        
-                        JOptionPane.showMessageDialog(null,"Coffee Added Successfully!");
-                        ShowProducts();
-                       // addtotransactions();
-                        
-                        
-                    } else {
-                        JOptionPane.showMessageDialog(null,"Error! Check your information.");
-                    }
+            ps = sqlconnection.getConnection().prepareStatement(query);
+            ps.setString(1, p);
+            ps.setString(2, d);
+            ps.setInt(3, q);
+            ps.setInt(4, pr);
+            ps.setString(5, c);
+            ps.setString(6, s);
 
-                } catch (SQLException ex) {
-                    Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
+            if (ps.executeUpdate() != 0) {
+
+                JOptionPane.showMessageDialog(null, "Coffee Added Successfully!");
+                ShowProducts();
+                // addtotransactions();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Error! Check your information.");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    
-    public boolean verifyFields(){
+
+    public boolean verifyFields() {
 
         String p = pname.getText();
         String d = desc.getText();
@@ -82,35 +79,48 @@ public class Products extends javax.swing.JFrame {
         String pr = price.getText();
         String c = category.getText();
         String s = stat.getSelectedItem().toString();
-        
 
-            if (p.trim().isEmpty() || d.trim().isEmpty() || pr.isEmpty() || q.isEmpty() || c.isEmpty() || s.isEmpty() ) {
+        if (p.trim().isEmpty() || d.trim().isEmpty() || pr.isEmpty() || q.isEmpty() || c.isEmpty() || s.isEmpty()) {
 
-                JOptionPane.showMessageDialog(null, "One or more fields are empty.");
-                return false;
-            }
-
-            else {
-                return true;
-            }
+            JOptionPane.showMessageDialog(null, "One or more fields are empty.");
+            return false;
+        } else {
+            return true;
         }
-    
+    }
+
     Connection Con = null;
     Statement st = null;
     Resultset rs = null;
-    
-    public void ShowProducts() {
-        
-      try {
-          Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kapehanjava2", "root","");
-          st = Con.createStatement();
-          rs = (Resultset) st.executeQuery("SELECT * FROM `products`");
-          producttable.setModel(DbUtils.resultSetToTableModel((ResultSet) (rs)));
 
-      } catch(SQLException e) {
-          
-          e.printStackTrace();
-      }      
+    public void ShowProducts() {
+
+//      try {
+//          Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kapehanjava2", "root","");
+//          st = Con.createStatement();
+//          rs = (Resultset) st.executeQuery("SELECT * FROM `products`");
+//          producttable.setModel(DbUtils.resultSetToTableModel((ResultSet) (rs)));
+//
+//      } catch(SQLException e) {
+//          
+//          e.printStackTrace();
+//      }      
+        try {
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from users where Status != 'removed'");
+            DefaultTableModel tm = (DefaultTableModel) producttable.getModel();
+            tm.setRowCount(0);
+
+            while (rs.next()) {
+                Object o[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
+                tm.addRow(o);
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -154,13 +164,13 @@ public class Products extends javax.swing.JFrame {
 
         producttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product ID", "Name", "Description", "Price", "Category", "Status"
             }
         ));
         producttable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -460,28 +470,28 @@ public class Products extends javax.swing.JFrame {
 
     private void updatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebuttonActionPerformed
         try {
-       
-        String query = "UPDATE `products` SET `productName`=?,`description`=?,`quantity`=?,`price`=?,`category`=?,`status`=? WHERE `productID`=";
-        PreparedStatement ps = Con.prepareStatement(query);
- 
-        ps.setString(1,pname.getText());       
-        ps.setString(2,desc.getText());
-        ps.setInt(3,Integer.parseInt(quantity.getText()));
-        ps.setInt(4,Integer.parseInt(price.getText()));
-        ps.setString(5, category.getText());
-        ps.setString(6, stat.getSelectedItem().toString());
-        ps.setInt(7, Integer.parseInt(invid.getText()));
-        
-        ps.executeUpdate();
-        
-        JOptionPane.showMessageDialog(null,"Product Updated Successfully.");
-        ShowProducts();
-        //updatetotransactions();
-        
-       } catch (SQLException ex) {
-        Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
-       } catch (NumberFormatException ex) {
-            
+
+            String query = "UPDATE `products` SET `productName`=?,`description`=?,`quantity`=?,`price`=?,`category`=?,`status`=? WHERE `productID`=";
+            PreparedStatement ps = Con.prepareStatement(query);
+
+            ps.setString(1, pname.getText());
+            ps.setString(2, desc.getText());
+            ps.setInt(3, Integer.parseInt(quantity.getText()));
+            ps.setInt(4, Integer.parseInt(price.getText()));
+            ps.setString(5, category.getText());
+            ps.setString(6, stat.getSelectedItem().toString());
+            ps.setInt(7, Integer.parseInt(invid.getText()));
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Product Updated Successfully.");
+            ShowProducts();
+            //updatetotransactions();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException ex) {
+
         }
     }//GEN-LAST:event_updatebuttonActionPerformed
 
@@ -506,27 +516,25 @@ public class Products extends javax.swing.JFrame {
 
     private void producttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_producttableMouseClicked
         try {
-            
-        DefaultTableModel model = (DefaultTableModel)producttable.getModel();
-        int Myindex = producttable.getSelectedRow();
-        invid.setText(model.getValueAt(Myindex, 0).toString());
-        pname.setText(model.getValueAt(Myindex, 1).toString());
-        desc.setText(model.getValueAt(Myindex, 2).toString());
-        price.setText(model.getValueAt(Myindex, 3).toString());
-        category.setText(model.getValueAt(Myindex, 4).toString());
-        quantity.setText(model.getValueAt(Myindex, 5).toString());
-        stat.setSelectedItem(model.getValueAt(Myindex, 6).toString());
-        
-        
-        
-        Integer quan = Integer.valueOf(quantity.getText());
-        
-        if (quan <= 10 ) {
-            JOptionPane.showMessageDialog(null, "Oof! We are running out of coffee. Please add more stocks!");
-        }
-        
-        } catch (NumberFormatException ex){
-            
+
+            DefaultTableModel model = (DefaultTableModel) producttable.getModel();
+            int Myindex = producttable.getSelectedRow();
+            invid.setText(model.getValueAt(Myindex, 0).toString());
+            pname.setText(model.getValueAt(Myindex, 1).toString());
+            desc.setText(model.getValueAt(Myindex, 2).toString());
+            price.setText(model.getValueAt(Myindex, 3).toString());
+            category.setText(model.getValueAt(Myindex, 4).toString());
+            quantity.setText(model.getValueAt(Myindex, 5).toString());
+            stat.setSelectedItem(model.getValueAt(Myindex, 6).toString());
+
+            Integer quan = Integer.valueOf(quantity.getText());
+
+            if (quan <= 10) {
+                JOptionPane.showMessageDialog(null, "Oof! We are running out of coffee. Please add more stocks!");
+            }
+
+        } catch (NumberFormatException ex) {
+
         }
     }//GEN-LAST:event_producttableMouseClicked
 
@@ -535,49 +543,45 @@ public class Products extends javax.swing.JFrame {
     }//GEN-LAST:event_quantityActionPerformed
 
     private void addbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addbuttonMouseClicked
-        
-        if(verifyFields()) {
-            
-        String p = pname.getText();
-        String d = desc.getText();
-        Integer q = Integer.valueOf(quantity.getText().trim());
-        Integer pr = Integer.valueOf(price.getText().trim());
-        String c = category.getText().trim();
-        String s = stat.getSelectedItem().toString();
 
-        
-        PreparedStatement ps;
-        String query = "INSERT INTO `products`( `productName`, `description`, `quantity`, `price`, `category`, `status`) VALUES (?,?,?,?,?,?)";
-        
-        try {
+        if (verifyFields()) {
 
-                    ps = sqlconnection.getConnection().prepareStatement(query);
-                    ps.setString(1, p);
-                    ps.setString(2, d);
-                    ps.setInt(3, q);
-                    ps.setInt(4, pr);
-                    ps.setString(5, c);
-                    ps.setString(6, s);
-                  
-             
-                    
-                    if (ps.executeUpdate() != 0 ) {
-                        
-                        JOptionPane.showMessageDialog(null,"Coffee Added Successfully!");
-                        ShowProducts();
-                       // addtotransactions();
-                        
-                        
-                    } else {
-                        JOptionPane.showMessageDialog(null,"Error! Check your information.");
-                    }
+            String p = pname.getText();
+            String d = desc.getText();
+            Integer q = Integer.valueOf(quantity.getText().trim());
+            Integer pr = Integer.valueOf(price.getText().trim());
+            String c = category.getText().trim();
+            String s = stat.getSelectedItem().toString();
 
-                } catch (SQLException ex) {
-                    Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+            PreparedStatement ps;
+            String query = "INSERT INTO `products`( `productName`, `description`, `quantity`, `price`, `category`, `status`) VALUES (?,?,?,?,?,?)";
+
+            try {
+
+                ps = sqlconnection.getConnection().prepareStatement(query);
+                ps.setString(1, p);
+                ps.setString(2, d);
+                ps.setInt(3, q);
+                ps.setInt(4, pr);
+                ps.setString(5, c);
+                ps.setString(6, s);
+
+                if (ps.executeUpdate() != 0) {
+
+                    JOptionPane.showMessageDialog(null, "Coffee Added Successfully!");
+                    ShowProducts();
+                    // addtotransactions();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error! Check your information.");
                 }
-        
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
-        
+
     }//GEN-LAST:event_addbuttonMouseClicked
 
     private void deletebuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deletebuttonMouseClicked
@@ -585,21 +589,21 @@ public class Products extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Enter the id to be deleted");
         } else {
             try {
-                
-                Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kapehanjava2", "root","");
+
+                Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kapehanjava2", "root", "");
                 String id = invid.getText();
                 String Query = "DELETE FROM `products` WHERE `productID`=" + id;
                 Statement Add = Con.createStatement();
                 Add.executeUpdate(Query);
- 
-                ShowProducts();  
-                
-                JOptionPane.showMessageDialog(null,"Product Removed Successfully.");
+
+                ShowProducts();
+
+                JOptionPane.showMessageDialog(null, "Product Removed Successfully.");
                 //deletetotransactions();
-                     
+
             } catch (SQLException e) {
                 e.printStackTrace();
-        }
+            }
         }
     }//GEN-LAST:event_deletebuttonMouseClicked
 
