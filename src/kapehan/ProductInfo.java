@@ -70,7 +70,7 @@ public class ProductInfo extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        getStarted = new javax.swing.JButton();
+        checkout = new javax.swing.JButton();
         addTocart = new javax.swing.JButton();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -110,6 +110,11 @@ public class ProductInfo extends javax.swing.JFrame {
 
         cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/noti-40.png"))); // NOI18N
         cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartMouseClicked(evt);
+            }
+        });
         jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 5, -1, -1));
         jPanel3.add(target, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, -1));
 
@@ -168,20 +173,20 @@ public class ProductInfo extends javax.swing.JFrame {
         jLabel7.setText("$100.00");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 405, -1, -1));
 
-        getStarted.setBackground(new java.awt.Color(52, 32, 0));
-        getStarted.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        getStarted.setForeground(new java.awt.Color(255, 255, 255));
-        getStarted.setText("Checkout");
-        getStarted.setBorder(null);
-        getStarted.setBorderPainted(false);
-        getStarted.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getStarted.setFocusPainted(false);
-        getStarted.addActionListener(new java.awt.event.ActionListener() {
+        checkout.setBackground(new java.awt.Color(52, 32, 0));
+        checkout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        checkout.setForeground(new java.awt.Color(255, 255, 255));
+        checkout.setText("Checkout");
+        checkout.setBorder(null);
+        checkout.setBorderPainted(false);
+        checkout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkout.setFocusPainted(false);
+        checkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getStartedActionPerformed(evt);
+                checkoutActionPerformed(evt);
             }
         });
-        jPanel3.add(getStarted, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 100, 25));
+        jPanel3.add(checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 100, 25));
 
         addTocart.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addTocart.setForeground(new java.awt.Color(52, 32, 0));
@@ -281,9 +286,10 @@ public class ProductInfo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_addMouseClicked
 
-    private void getStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getStartedActionPerformed
-       
-    }//GEN-LAST:event_getStartedActionPerformed
+    private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
+       this.setVisible(false);
+       new Checkout().setVisible(true);
+    }//GEN-LAST:event_checkoutActionPerformed
 
     private void addTocartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTocartActionPerformed
         JOptionPane.showMessageDialog(null, "Added to cart.","I love Coffee!", JOptionPane.PLAIN_MESSAGE);
@@ -292,6 +298,11 @@ public class ProductInfo extends javax.swing.JFrame {
         cartNum.setText(String.valueOf(current+newVal));
        
     }//GEN-LAST:event_addTocartActionPerformed
+
+    private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
+        this.setVisible(false);
+        new Cart().setVisible(true);
+    }//GEN-LAST:event_cartMouseClicked
 
    
     /**
@@ -350,7 +361,7 @@ public class ProductInfo extends javax.swing.JFrame {
     private javax.swing.JPanel body;
     private javax.swing.JLabel cart;
     private javax.swing.JLabel cartNum;
-    private javax.swing.JButton getStarted;
+    private javax.swing.JButton checkout;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

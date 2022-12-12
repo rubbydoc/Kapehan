@@ -277,7 +277,9 @@ public class Checkout extends javax.swing.JFrame {
     }//GEN-LAST:event_addrActionPerformed
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
-
+        int option = JOptionPane.showConfirmDialog(null, "Confirm Payment?", "", JOptionPane.OK_CANCEL_OPTION);
+        if (option == JOptionPane.OK_OPTION) {
+        }
     }//GEN-LAST:event_payActionPerformed
 
     private void deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryActionPerformed

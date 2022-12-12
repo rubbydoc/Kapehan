@@ -101,6 +101,11 @@ public class Home extends javax.swing.JFrame {
 
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
         profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
         jPanel3.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/noti-40.png"))); // NOI18N
@@ -226,6 +231,11 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
         new Cart().setVisible(true);
     }//GEN-LAST:event_cartMouseClicked
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        this.setVisible(false);
+        new Account().setVisible(true);
+    }//GEN-LAST:event_profileMouseClicked
 
     
     
