@@ -20,7 +20,7 @@ public class Home extends javax.swing.JFrame {
      */
     static String imgSource;
     static String productName;
-    int numcart;
+    static int numcart;
     public Home() {
         setUndecorated(true);
         initComponents();
@@ -31,11 +31,11 @@ public class Home extends javax.swing.JFrame {
       
     }
 
-    public String getImgSource(){
+    public static String getImgSource(){
     return imgSource;
     }
     
-    public String getProductName(){
+    public static String getProductName(){
     return productName;
     }
     
@@ -43,7 +43,7 @@ public class Home extends javax.swing.JFrame {
         this.numcart=numcart;
     }
     
-    public int getNumCart(){
+    public static int getNumCart(){
     return numcart;
     }
     
@@ -56,7 +56,6 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
         body = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -72,22 +71,9 @@ public class Home extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-
-        jInternalFrame1.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +105,11 @@ public class Home extends javax.swing.JFrame {
 
         cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/noti-40.png"))); // NOI18N
         cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartMouseClicked(evt);
+            }
+        });
         jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 0, 49, -1));
 
         searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
@@ -160,18 +151,18 @@ public class Home extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 140, 160));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 190, -1));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setText("Caffè Americano");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel14.setText("$100.00");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+        price.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        price.setText("$100.00");
+        jPanel2.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 236, 370, 170));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 236, 370, -1));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -180,7 +171,7 @@ public class Home extends javax.swing.JFrame {
         jScrollPane2.getViewport().setOpaque(false);
 
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
-        body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 830, 940));
+        body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -230,6 +221,11 @@ public class Home extends javax.swing.JFrame {
         new ProductInfo().setVisible(true);
                 
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
+        this.setVisible(false);
+        new Cart().setVisible(true);
+    }//GEN-LAST:event_cartMouseClicked
 
     
     
@@ -283,9 +279,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel filter;
     private javax.swing.JLabel hot;
     private javax.swing.JLabel ice;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -293,6 +287,7 @@ public class Home extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
+    private javax.swing.JLabel price;
     private javax.swing.JLabel profile;
     private javax.swing.JLabel searchButton;
     private javax.swing.JTextField searchField;
