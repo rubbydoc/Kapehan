@@ -6,6 +6,10 @@ package kapehan;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 
@@ -21,6 +25,7 @@ public class Checkout extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
+    Connect c = new Connect();
 
     public Checkout() {
         setUndecorated(true);
@@ -105,11 +110,11 @@ public class Checkout extends javax.swing.JFrame {
                 backButtonMouseClicked(evt);
             }
         });
-        pickupPanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        pickupPanel.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Checkout");
-        pickupPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        pickupPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         pickup.setBackground(new java.awt.Color(52, 32, 0));
         pickup.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -124,9 +129,9 @@ public class Checkout extends javax.swing.JFrame {
                 pickupActionPerformed(evt);
             }
         });
-        pickupPanel.add(pickup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 100, 30));
+        pickupPanel.add(pickup, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 170, 40));
 
-        addr.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        addr.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addr.setText("Samjung Bldg. Nasipit Road, Talamban");
         addr.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         addr.addActionListener(new java.awt.event.ActionListener() {
@@ -134,30 +139,30 @@ public class Checkout extends javax.swing.JFrame {
                 addrActionPerformed(evt);
             }
         });
-        pickupPanel.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 200, 30));
+        pickupPanel.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 340, 40));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel9.setText("Discount");
-        pickupPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        pickupPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Total");
-        pickupPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        pickupPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel11.setText("$1000.00");
-        pickupPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+        pickupPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel12.setText("$1000.00");
-        pickupPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
+        pickupPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setText("$900.00");
-        pickupPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
+        pickupPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 670, -1, -1));
 
         pay.setBackground(new java.awt.Color(52, 32, 0));
-        pay.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         pay.setForeground(new java.awt.Color(255, 255, 255));
         pay.setText("Pay");
         pay.setBorder(null);
@@ -169,7 +174,7 @@ public class Checkout extends javax.swing.JFrame {
                 payActionPerformed(evt);
             }
         });
-        pickupPanel.add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 160, 25));
+        pickupPanel.add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 750, 260, 40));
 
         delivery.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         delivery.setForeground(new java.awt.Color(52, 32, 0));
@@ -183,38 +188,43 @@ public class Checkout extends javax.swing.JFrame {
                 deliveryActionPerformed(evt);
             }
         });
-        pickupPanel.add(delivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 100, 30));
+        pickupPanel.add(delivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 170, 40));
 
-        address.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        address.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         address.setText("Shop Address");
-        pickupPanel.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        pickupPanel.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Payment Mehod");
-        pickupPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        pickupPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash on Pickup", "Credit Card" }));
         jComboBox1.setSelectedIndex(-1);
         jComboBox1.setBorder(null);
         jComboBox1.setFocusable(false);
-        pickupPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, -1));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        pickupPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 340, 40));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Summary Items");
-        pickupPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        pickupPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel5.setText("10x Tall Iced Latte");
-        pickupPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-        pickupPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 273, 200, 10));
+        pickupPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        pickupPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 350, 10));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel6.setText("Sub total");
-        pickupPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        pickupPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel13.setText("$10.00");
-        pickupPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+        pickupPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 60, -1));
 
         jScrollPane2.setViewportView(pickupPanel);
 
@@ -279,6 +289,29 @@ public class Checkout extends javax.swing.JFrame {
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
         int option = JOptionPane.showConfirmDialog(null, "Confirm Payment?", "", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
+
+            try {
+                Statement stmt = c.connect().createStatement();
+                ResultSet rs = stmt.executeQuery("select * from cart");
+
+                while (rs.next()) {
+                    String id = rs.getString(1);
+                    String qty = rs.getString(6);
+
+                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO transactions (customerID, productID, qty, couponID,total, date) VALUES (?,?,?,?,?,?)");
+                    ps.setInt(1, new SignIn().custID);
+                    ps.setString(2, id);
+                    ps.setString(3,qty);
+                    ps.setInt(4, new Cart().couponId);
+                    ps.executeUpdate();
+
+                }
+
+                c.connect().close();
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
         }
     }//GEN-LAST:event_payActionPerformed
 
@@ -300,6 +333,10 @@ public class Checkout extends javax.swing.JFrame {
         this.setVisible(false);
         new Cart().setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

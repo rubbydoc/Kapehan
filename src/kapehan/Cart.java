@@ -28,6 +28,7 @@ public class Cart extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
+    static int couponId;
     Connect c = new Connect();
 
     public Cart() {
@@ -269,6 +270,8 @@ public class Cart extends javax.swing.JFrame {
 
             while (rs.next()) {
                 String couponCode = rs.getString(2);
+                couponId = rs.getInt(1);
+                
                 if (couponField.equals(couponCode)) {
                     isValid = true;
 

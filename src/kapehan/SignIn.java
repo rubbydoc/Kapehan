@@ -5,6 +5,11 @@
 package kapehan;
 
 import java.awt.Color;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -15,11 +20,14 @@ public class SignIn extends javax.swing.JFrame {
     /**
      * Creates new form page2
      */
+    static int custID;
+    Connect c = new Connect();
+
     public SignIn() {
         setUndecorated(true);
         initComponents();
-        setBackground(new Color(0,0,0,0));
-        body.setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0, 0, 0, 0));
+        body.setBackground(new Color(0, 0, 0, 0));
     }
 
     /**
@@ -201,8 +209,31 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
-      this.dispose();
-      new Home().setVisible(true);
+
+        String pass = String.valueOf(password.getPassword());
+        String mail = email.getText();
+
+        try {
+//            
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from users");
+
+            while (rs.next()) {
+
+                if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(5)) & rs.getString(8).equals("active")) {
+//                    this.setVisible(false);
+//                    new CashierUI().setVisible(true);
+                    custID = rs.getInt(1);
+                    this.dispose();
+                    new Home().setVisible(true);
+                }
+
+            }
+            c.connect().close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_signInActionPerformed
 
     /**

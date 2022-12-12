@@ -6,8 +6,13 @@ package kapehan;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
+import static kapehan.Cart.couponId;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -21,31 +26,32 @@ public class AccountInformation extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
+    Connect c = new Connect();
+
     public AccountInformation() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
-        
-      
+
     }
 
-    public static String getImgSource(){
-    return imgSource;
+    public static String getImgSource() {
+        return imgSource;
     }
-    
-    public static String getProductName(){
-    return productName;
+
+    public static String getProductName() {
+        return productName;
     }
-    
-    public void setNumCart(int numcart){
-        this.numcart=numcart;
+
+    public void setNumCart(int numcart) {
+        this.numcart = numcart;
     }
-    
-    public static int getNumCart(){
-    return numcart;
+
+    public static int getNumCart() {
+        return numcart;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,12 +66,16 @@ public class AccountInformation extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        phoneNum = new javax.swing.JTextField();
         fullName = new javax.swing.JTextField();
-        fullName1 = new javax.swing.JTextField();
-        fullName2 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        edit = new javax.swing.JLabel();
+        save = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        address = new javax.swing.JTextField();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -99,29 +109,30 @@ public class AccountInformation extends javax.swing.JFrame {
         jLabel2.setText("My Information ");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
+        phoneNum.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        phoneNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneNumActionPerformed(evt);
+            }
+        });
+        jPanel3.add(phoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 350, 50));
+
+        fullName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         fullName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         fullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fullNameActionPerformed(evt);
             }
         });
-        jPanel3.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 350, 50));
+        jPanel3.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 350, 50));
 
-        fullName1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        fullName1.addActionListener(new java.awt.event.ActionListener() {
+        email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fullName1ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        jPanel3.add(fullName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 350, 50));
-
-        fullName2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        fullName2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fullName2ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(fullName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 350, 50));
+        jPanel3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 350, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Phone Number");
@@ -134,6 +145,42 @@ public class AccountInformation extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Email");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        edit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        edit.setText("Edit");
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMouseClicked(evt);
+            }
+        });
+        jPanel3.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        save.setBackground(new java.awt.Color(52, 32, 0));
+        save.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
+        save.setText("Save Changes");
+        save.setBorder(null);
+        save.setBorderPainted(false);
+        save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        save.setFocusPainted(false);
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+        jPanel3.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 750, 260, 40));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Address");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+
+        address.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressActionPerformed(evt);
+            }
+        });
+        jPanel3.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 350, 50));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -178,27 +225,89 @@ public class AccountInformation extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void phoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNumActionPerformed
+
     private void fullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fullNameActionPerformed
 
-    private void fullName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullName1ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fullName1ActionPerformed
-
-    private void fullName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullName2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fullName2ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-       this.setVisible(false);
+        this.setVisible(false);
         new Account().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
- 
-    
-    
-    
+    private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
+
+        fullName.setEnabled(true);
+
+
+    }//GEN-LAST:event_editMouseClicked
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        try {
+
+            PreparedStatement ps = c.connect().prepareStatement("UPDATE customers SET fullName=?, email=?, phone=?, address=? WHERE customerID=?");
+            ps.setString(1, fullName.getText());
+            ps.setString(2, email.getText());
+            ps.setString(3, phoneNum.getText());
+            ps.setString(4, address.getText());
+
+            ps.setInt(5, new SignIn().custID);
+
+            ps.executeUpdate();
+
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        fullName.setEnabled(false);
+        email.setEnabled(false);
+        phoneNum.setEnabled(false);
+        address.setEnabled(false);
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressActionPerformed
+
+    public void displayInformation() {
+        int ID = new SignIn().custID;
+
+        try {
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from customers where customerID = '" + ID + "'");
+
+            while (rs.next()) {
+                String fullname = rs.getString(2);
+                String mail = rs.getString(3);
+                String phoneNumber = rs.getString(4);
+                String addr = rs.getString(6);
+
+                fullName.setText(fullname);
+                email.setText(mail);
+                phoneNum.setText(phoneNumber);
+                address.setText(addr);
+
+                fullName.setEnabled(false);
+                email.setEnabled(false);
+                phoneNum.setEnabled(false);
+                address.setEnabled(false);
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -266,20 +375,23 @@ public class AccountInformation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField address;
     private javax.swing.JPanel body;
+    private javax.swing.JLabel edit;
+    private javax.swing.JTextField email;
     private javax.swing.JTextField fullName;
-    private javax.swing.JTextField fullName1;
-    private javax.swing.JTextField fullName2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
+    private javax.swing.JTextField phoneNum;
+    private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
 
-    
 }

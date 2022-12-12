@@ -61,12 +61,13 @@ public class Home extends javax.swing.JFrame {
     public static String getProductName() {
         return productName;
     }
-    public static String getProductDescription(){
-    return productDes;
+
+    public static String getProductDescription() {
+        return productDes;
     }
-    
-    public static String getProductPrice(){
-    return productPrice;
+
+    public static String getProductPrice() {
+        return productPrice;
     }
 
     public void setNumCart(int numcart) {
@@ -242,13 +243,14 @@ public class Home extends javax.swing.JFrame {
                 String productName = rs.getString(2);
                 String productPrice = rs.getString(4);
                 String des = rs.getString(3);
+                
 
                 if (rs.getInt(1) % 2 == 1) {
-                    columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png",des);
+                    columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png", des);
                     i += 250;
                 } else {
 
-                    columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png",des);
+                    columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png", des);
                     l += 250;
 
                 }
@@ -298,7 +300,7 @@ public class Home extends javax.swing.JFrame {
         img.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 
-                imgSource = "/img/coffee/" + name+"_info" + ".png";
+                imgSource = "/img/coffee/" + name + "_info" + ".png";
                 productName = name;
                 productDes = description;
                 productPrice = price;

@@ -6,8 +6,13 @@ package kapehan;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
+import static kapehan.Cart.couponId;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -21,31 +26,32 @@ public class Password extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
+    Connect c = new Connect();
+
     public Password() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
-        
-      
+
     }
 
-    public static String getImgSource(){
-    return imgSource;
+    public static String getImgSource() {
+        return imgSource;
     }
-    
-    public static String getProductName(){
-    return productName;
+
+    public static String getProductName() {
+        return productName;
     }
-    
-    public void setNumCart(int numcart){
-        this.numcart=numcart;
+
+    public void setNumCart(int numcart) {
+        this.numcart = numcart;
     }
-    
-    public static int getNumCart(){
-    return numcart;
+
+    public static int getNumCart() {
+        return numcart;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,11 +67,12 @@ public class Password extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        fullName1 = new javax.swing.JTextField();
+        currentPass = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        fullName2 = new javax.swing.JTextField();
+        newPass = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        fullName = new javax.swing.JTextField();
+        confirm = new javax.swing.JTextField();
+        save = new javax.swing.JButton();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -103,37 +110,52 @@ public class Password extends javax.swing.JFrame {
         jLabel4.setText("Current Password");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        fullName1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        fullName1.addActionListener(new java.awt.event.ActionListener() {
+        currentPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        currentPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fullName1ActionPerformed(evt);
+                currentPassActionPerformed(evt);
             }
         });
-        jPanel3.add(fullName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 350, 50));
+        jPanel3.add(currentPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 350, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("New Password");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        fullName2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        fullName2.addActionListener(new java.awt.event.ActionListener() {
+        newPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        newPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fullName2ActionPerformed(evt);
+                newPassActionPerformed(evt);
             }
         });
-        jPanel3.add(fullName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 350, 50));
+        jPanel3.add(newPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 350, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Confirm New Password");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
-        fullName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        fullName.addActionListener(new java.awt.event.ActionListener() {
+        confirm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fullNameActionPerformed(evt);
+                confirmActionPerformed(evt);
             }
         });
-        jPanel3.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 350, 50));
+        jPanel3.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 350, 50));
+
+        save.setBackground(new java.awt.Color(52, 32, 0));
+        save.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        save.setForeground(new java.awt.Color(255, 255, 255));
+        save.setText("Save Changes");
+        save.setBorder(null);
+        save.setBorderPainted(false);
+        save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        save.setFocusPainted(false);
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+        jPanel3.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 750, 260, 40));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -179,26 +201,55 @@ public class Password extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-       this.setVisible(false);
+        this.setVisible(false);
         new Account().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void fullName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullName1ActionPerformed
+    private void currentPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fullName1ActionPerformed
+    }//GEN-LAST:event_currentPassActionPerformed
 
-    private void fullName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullName2ActionPerformed
+    private void newPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fullName2ActionPerformed
+    }//GEN-LAST:event_newPassActionPerformed
 
-    private void fullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullNameActionPerformed
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fullNameActionPerformed
+    }//GEN-LAST:event_confirmActionPerformed
 
- 
-    
-    
-    
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        try {
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from customers where customerID=" + new SignIn().custID);
+
+            while (rs.next()) {
+                String pass = rs.getString(5);
+                if (currentPass.getText().equals(pass)) {
+                    if (newPass.getText().equals(confirm.getText())) {
+                        PreparedStatement ps = c.connect().prepareStatement("UPDATE customers SET password=? WHERE customerID=?");
+                        ps.setString(1, newPass.getText());
+                        ps.setInt(2, new SignIn().custID);
+
+                        ps.executeUpdate();
+
+                    }
+
+                } else{JOptionPane.showMessageDialog(null,"Incorrect Password.");  
+                
+                }
+
+            }
+
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+       
+        
+    }//GEN-LAST:event_saveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,9 +318,8 @@ public class Password extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
-    private javax.swing.JTextField fullName;
-    private javax.swing.JTextField fullName1;
-    private javax.swing.JTextField fullName2;
+    private javax.swing.JTextField confirm;
+    private javax.swing.JTextField currentPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,8 +328,9 @@ public class Password extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField newPass;
     private javax.swing.JLabel phone;
+    private javax.swing.JButton save;
     // End of variables declaration//GEN-END:variables
 
-    
 }
