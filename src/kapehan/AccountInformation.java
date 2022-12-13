@@ -112,6 +112,7 @@ public class AccountInformation extends javax.swing.JFrame {
         jLabel2.setText("My Information ");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
+        phoneNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         phoneNum.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         phoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +130,7 @@ public class AccountInformation extends javax.swing.JFrame {
         });
         jPanel3.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 350, 50));
 
+        email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,14 +152,14 @@ public class AccountInformation extends javax.swing.JFrame {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         edit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        edit.setText("Edit");
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit (1).png"))); // NOI18N
         edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editMouseClicked(evt);
             }
         });
-        jPanel3.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        jPanel3.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         save.setBackground(new java.awt.Color(52, 32, 0));
         save.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -178,6 +180,7 @@ public class AccountInformation extends javax.swing.JFrame {
         jLabel6.setText("Address");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
+        address.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         address.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

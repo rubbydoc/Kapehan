@@ -217,6 +217,7 @@ public class Checkout extends javax.swing.JFrame {
         pickupPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         paymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Credit Card" }));
+        paymentMethod.setSelectedIndex(-1);
         paymentMethod.setBorder(null);
         paymentMethod.setFocusable(false);
         paymentMethod.addActionListener(new java.awt.event.ActionListener() {

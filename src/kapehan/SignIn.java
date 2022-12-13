@@ -22,6 +22,7 @@ public class SignIn extends javax.swing.JFrame {
      * Creates new form page2
      */
     static int custID;
+    static String custName;
     Connect c = new Connect();
 
     public SignIn() {
@@ -238,6 +239,7 @@ public class SignIn extends javax.swing.JFrame {
 //                  
                     notMatch = false;
                     custID = rs.getInt(1);
+                    custName = rs.getString(2);
                     this.dispose();
                     new Home().setVisible(true);break;
                 } else {

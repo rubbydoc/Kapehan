@@ -33,7 +33,7 @@ public class ProductInfo extends javax.swing.JFrame {
 
         target.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Home().getImgSource())));
         prodName.setText(new Home().getProductName());
-        cartNum.setText(String.valueOf(new Home().getNumCart()));
+//        cartNum.setText(String.valueOf(new Home().getNumCart()));
         description.setText("<html>" + new Home().getProductDescription() + "</html>");
         price.setText("$" + new Home().getProductPrice());
     }
@@ -59,7 +59,6 @@ public class ProductInfo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cartNum = new javax.swing.JLabel();
         cart = new javax.swing.JLabel();
         target = new javax.swing.JLabel();
         prodName = new javax.swing.JLabel();
@@ -104,20 +103,14 @@ public class ProductInfo extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        cartNum.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cartNum.setForeground(new java.awt.Color(255, 255, 255));
-        cartNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cartNum.setText("0");
-        jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 38, 20, 20));
-
-        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cart (50 × 50 px).png"))); // NOI18N
+        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/shopping-cart (1).png"))); // NOI18N
         cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cartMouseClicked(evt);
             }
         });
-        jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+        jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
         jPanel3.add(target, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 410, 350));
 
         prodName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -249,7 +242,7 @@ public class ProductInfo extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         this.dispose();
-        new Home().setNumCart(Integer.parseInt(cartNum.getText()));
+//        new Home().setNumCart(Integer.parseInt(cartNum.getText()));
         new Home().setVisible(true);
 
 
@@ -258,23 +251,23 @@ public class ProductInfo extends javax.swing.JFrame {
     private void minusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusMouseClicked
         int currentQty = Integer.parseInt(qty.getText());
 
-        String currentVal = cartNum.getText();
-
-        if (currentVal.equals("0")) {
-        } else {
-
-            if (Integer.parseInt(qty.getText()) < 1) {
+//        String currentVal = cartNum.getText();
+ if (Integer.parseInt(qty.getText()) < 1) {
 
             } else {
                 currentQty--;
                 qty.setText(String.valueOf(currentQty));
             }
-
-        }
+//        if (currentVal.equals("0")) {
+//        } else {
+//
+//           
+//
+//        }
     }//GEN-LAST:event_minusMouseClicked
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-        String currentVal = cartNum.getText();
+//        String currentVal = cartNum.getText();
         int currentQty = Integer.parseInt(qty.getText());
 
         if (Integer.parseInt(qty.getText()) < 0) {
@@ -312,9 +305,9 @@ public class ProductInfo extends javax.swing.JFrame {
 
             if (option == JOptionPane.OK_OPTION) {
                 double total = Double.parseDouble(new Home().getProductPrice()) * Double.parseDouble(qty.getText());
-                int current = Integer.parseInt(cartNum.getText());
-                int newVal = Integer.parseInt(qty.getText());
-                cartNum.setText(String.valueOf(current + newVal));
+//                int current = Integer.parseInt(cartNum.getText());
+//                int newVal = Integer.parseInt(qty.getText());
+//                cartNum.setText(String.valueOf(current + newVal));
                 try {
                     PreparedStatement ps = c.connect().prepareStatement("INSERT INTO cart (product, size, price, discount,qty, total) VALUES (?,?,?,?,?,?)");
                     ps.setString(1, prodName.getText());
@@ -401,7 +394,6 @@ public class ProductInfo extends javax.swing.JFrame {
     private javax.swing.JButton addTocart;
     private javax.swing.JPanel body;
     private javax.swing.JLabel cart;
-    private javax.swing.JLabel cartNum;
     private javax.swing.JButton checkout;
     private static javax.swing.JLabel description;
     private javax.swing.JComboBox<String> jComboBox1;

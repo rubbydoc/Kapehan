@@ -49,7 +49,7 @@ public class Home extends javax.swing.JFrame {
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
 
-        cartNum.setText(String.valueOf(numcart));
+//        cartNum.setText(String.valueOf(numcart));
         displayProducts();
 
     }
@@ -90,16 +90,14 @@ public class Home extends javax.swing.JFrame {
         body = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
-        cartNum = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         profile = new javax.swing.JLabel();
         cart = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
         searchButton = new javax.swing.JLabel();
-        filter = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         hot = new javax.swing.JLabel();
         ice = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -120,63 +118,9 @@ public class Home extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cartNum.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cartNum.setForeground(new java.awt.Color(255, 255, 255));
-        cartNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cartNum.setText("0");
-        cartNum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 12, 40, 50));
-
-        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user (1).png"))); // NOI18N
-        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        profile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                profileMouseClicked(evt);
-            }
-        });
-        jPanel3.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cart (50 × 50 px).png"))); // NOI18N
-        cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cart.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cartMouseClicked(evt);
-            }
-        });
-        jPanel3.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 49, -1));
-
-        searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        searchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
-            }
-        });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 270, 40));
-
-        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search (2).png"))); // NOI18N
-        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
-
-        filter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/filter (1).png"))); // NOI18N
-        filter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Categories");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-
-        hot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/category.png"))); // NOI18N
-        hot.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(hot, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-
-        ice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/category (1).png"))); // NOI18N
-        ice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(ice, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
-
         jScrollPane2.setViewportView(jPanel3);
 
-        body.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 390, 800));
+        body.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 390, 510));
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
 
@@ -188,6 +132,68 @@ public class Home extends javax.swing.JFrame {
             }
         });
         body.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
+
+        profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user (1).png"))); // NOI18N
+        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+        });
+        body.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+
+        cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/shopping-cart.png"))); // NOI18N
+        cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartMouseClicked(evt);
+            }
+        });
+        body.add(cart, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 30, -1));
+
+        searchField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        body.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 310, 40));
+
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search (2).png"))); // NOI18N
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchButtonMouseClicked(evt);
+            }
+        });
+        body.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setText("Categories");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        body.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+
+        hot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/category.png"))); // NOI18N
+        hot.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hotMouseClicked(evt);
+            }
+        });
+        body.add(hot, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+
+        ice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/category (1).png"))); // NOI18N
+        ice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iceMouseClicked(evt);
+            }
+        });
+        body.add(ice, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
 
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
@@ -245,11 +251,135 @@ public class Home extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
+        String search = searchField.getText();
+
+        if (search.equals("")) {
+            jPanel3.removeAll();
+            jPanel3.repaint();
+            jPanel3.revalidate();
+            displayProducts();
+
+        } else {
+            jPanel3.removeAll();
+            jPanel3.repaint();
+            jPanel3.revalidate();
+            try {
+                int i = 40;
+                int j = 200;
+                int l = 40;
+
+                Statement stmt = c.connect().createStatement();
+                ResultSet rs = stmt.executeQuery("select * from products where status='available' and productName LIKE'" + search + "%'");
+
+                while (rs.next()) {
+                    String productName = rs.getString(2);
+                    String productPrice = rs.getString(4);
+                    String des = rs.getString(3);
+
+                    if (rs.getInt(1) % 2 == 1) {
+                        columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png", des);
+                        i += 250;
+                    } else {
+
+                        columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png", des);
+                        l += 250;
+
+                    }
+
+                }
+                c.connect().close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+        }
+
+
+    }//GEN-LAST:event_searchButtonMouseClicked
+
+    private void hotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hotMouseClicked
+        try {
+            jPanel3.removeAll();
+            jPanel3.repaint();
+            jPanel3.revalidate();
+            int i = 40;
+            int j = 200;
+            int l = 40;
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from products where status='available' and category ='Hot'");
+
+            while (rs.next()) {
+                String productName = rs.getString(2);
+                String productPrice = rs.getString(4);
+                String des = rs.getString(3);
+
+                if (rs.getInt(1) % 2 == 1) {
+                    columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png", des);
+                    i += 250;
+                } else {
+
+                    columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png", des);
+                    l += 250;
+
+                }
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }//GEN-LAST:event_hotMouseClicked
+
+    private void iceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iceMouseClicked
+        try {
+            jPanel3.removeAll();
+            jPanel3.repaint();
+            jPanel3.revalidate();
+            int i = 40;
+            int j = 200;
+            int l = 40;
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from products where status='available' and category ='Iced'");
+
+            while (rs.next()) {
+                String productName = rs.getString(2);
+                String productPrice = rs.getString(4);
+                String des = rs.getString(3);
+
+                if (rs.getInt(1) % 2 == 1) {
+                    columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png", des);
+                    i += 250;
+                } else {
+
+                    columnTwo(productName, productPrice, j, l, "/img/coffee/" + productName + ".png", des);
+                    l += 250;
+
+                }
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }//GEN-LAST:event_iceMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        jPanel3.removeAll();
+        jPanel3.repaint();
+        jPanel3.revalidate();
+        displayProducts();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
     public void displayProducts() {
         try {
-            int i = 330;
+            int i = 40;
             int j = 200;
-            int l = 330;
+            int l = 40;
 
             Statement stmt = c.connect().createStatement();
             ResultSet rs = stmt.executeQuery("select * from products where status='available'");
@@ -423,8 +553,6 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JLabel cart;
-    private static javax.swing.JLabel cartNum;
-    private javax.swing.JLabel filter;
     private javax.swing.JLabel hot;
     private javax.swing.JLabel ice;
     private javax.swing.JLabel jLabel1;

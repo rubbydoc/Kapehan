@@ -295,25 +295,31 @@ public class SignUp extends javax.swing.JFrame {
         String phone = phoneNumber.getText();
         String add = address.getText();
 
-        try {
-            PreparedStatement ps = c.connect().prepareStatement("INSERT INTO customers (fullName, email, phone,password, address, status) VALUES (?,?,?,?,?,?)");
-            ps.setString(1, firstname);
-            ps.setString(2, mail);
-            ps.setString(3, phone);
-            ps.setString(4, password);
-            ps.setString(5, add);
-            ps.setString(6, "active");
+        if (confirm.equals(password)) {
+            try {
+                PreparedStatement ps = c.connect().prepareStatement("INSERT INTO customers (fullName, email, phone,password, address, status) VALUES (?,?,?,?,?,?)");
+                ps.setString(1, firstname);
+                ps.setString(2, mail);
+                ps.setString(3, phone);
+                ps.setString(4, password);
+                ps.setString(5, add);
+                ps.setString(6, "active");
 
-            ps.executeUpdate();
-            c.connect().close();
+                ps.executeUpdate();
+                c.connect().close();
 
-        } catch (SQLException e) {
+            } catch (SQLException e) {
+            }
+
+            JOptionPane.showMessageDialog(null, "Successfuly registered!", "",
+                    JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            new SignIn().setVisible(true);
+
+        }else{
+         JOptionPane.showMessageDialog(null, "Password do not match", "",JOptionPane.INFORMATION_MESSAGE);
         }
 
-        JOptionPane.showMessageDialog(null, "Successfuly registered!", "",
-                JOptionPane.INFORMATION_MESSAGE);
-        this.dispose();
-        new SignIn().setVisible(true);
     }//GEN-LAST:event_signInActionPerformed
 
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
