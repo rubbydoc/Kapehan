@@ -10,8 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
+import static kapehan.Cart.tot;
 
 /**
  *
@@ -26,13 +28,24 @@ public class Checkout extends javax.swing.JFrame {
     static String productName;
     static int numcart;
     Connect c = new Connect();
+    static String t;
+    double totl;
+    double sumItems;
+    static int couponId;
+    boolean pick = true;
+    String addres;
+    String phoneNum;
+    String mode;
 
     public Checkout() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
-        total.setText(new Cart().tot);
+        total.setText(t);
+        summary();
+        //        total.setText("$" + String.valueOf(totl));
+        addrPhone();
 
     }
 
@@ -67,14 +80,31 @@ public class Checkout extends javax.swing.JFrame {
         backButton = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pickup = new javax.swing.JButton();
-        addr = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         pay = new javax.swing.JButton();
         delivery = new javax.swing.JButton();
-        address = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         paymentMethod = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        coupon = new javax.swing.JTextField();
+        applyCoupon = new javax.swing.JButton();
+        discount = new javax.swing.JLabel();
+        pickupPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        addr1 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        address1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        paymentMethod1 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        applyCoupon1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        pn = new javax.swing.JTextField();
+        phonenum = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -125,23 +155,14 @@ public class Checkout extends javax.swing.JFrame {
         });
         pickupPanel.add(pickup, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 170, 40));
 
-        addr.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        addr.setText("Samjung Bldg. Nasipit Road, Talamban");
-        addr.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        addr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addrActionPerformed(evt);
-            }
-        });
-        pickupPanel.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 340, 40));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Total");
-        pickupPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        pickupPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, -1, -1));
 
         total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         total.setText("$900.00");
-        pickupPanel.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, -1, -1));
+        pickupPanel.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, -1, -1));
 
         pay.setBackground(new java.awt.Color(52, 32, 0));
         pay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -172,16 +193,30 @@ public class Checkout extends javax.swing.JFrame {
         });
         pickupPanel.add(delivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 170, 40));
 
-        address.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        address.setText("Shop Address");
-        pickupPanel.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane3.setMinimumSize(new java.awt.Dimension(0, 0));
+        jScrollPane3.setViewportView(null);
+        JScrollBar v = jScrollPane2.getVerticalScrollBar();
+        v.setPreferredSize( new Dimension(1,0) );
+
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane3.setViewportView(jPanel3);
+
+        pickupPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 390, 140));
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.getViewport().setOpaque(false);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Payment Mehod");
-        pickupPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        jLabel4.setText("Summary Items");
+        pickupPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
-        paymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash on Pickup", "Credit Card" }));
-        paymentMethod.setSelectedIndex(-1);
+        paymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Credit Card" }));
         paymentMethod.setBorder(null);
         paymentMethod.setFocusable(false);
         paymentMethod.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +224,132 @@ public class Checkout extends javax.swing.JFrame {
                 paymentMethodActionPerformed(evt);
             }
         });
-        pickupPanel.add(paymentMethod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 340, 40));
+        pickupPanel.add(paymentMethod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 340, 40));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setText("Payment Method");
+        pickupPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+
+        coupon.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        coupon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                couponActionPerformed(evt);
+            }
+        });
+        pickupPanel.add(coupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 260, 40));
+
+        applyCoupon.setBackground(new java.awt.Color(52, 32, 0));
+        applyCoupon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        applyCoupon.setForeground(new java.awt.Color(255, 255, 255));
+        applyCoupon.setText("Apply");
+        applyCoupon.setBorder(null);
+        applyCoupon.setBorderPainted(false);
+        applyCoupon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        applyCoupon.setFocusPainted(false);
+        applyCoupon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyCouponActionPerformed(evt);
+            }
+        });
+        pickupPanel.add(applyCoupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, 80, 40));
+
+        discount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        discount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        discount.setText("jLabel5");
+        pickupPanel.add(discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 660, -1, -1));
+
+        pickupPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        pickupPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setText("Checkout");
+        pickupPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        addr1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        addr1.setText("Samjung Bldg. Nasipit Road, Talamban");
+        addr1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        addr1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addr1ActionPerformed(evt);
+            }
+        });
+        pickupPanel1.add(addr1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 340, 40));
+
+        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setBorder(null);
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane4.setMinimumSize(new java.awt.Dimension(0, 0));
+        jScrollPane4.setViewportView(null);
+        JScrollBar ver = jScrollPane2.getVerticalScrollBar();
+        ver.setPreferredSize( new Dimension(1,0) );
+
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane4.setViewportView(jPanel4);
+
+        pickupPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 390, 140));
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.getViewport().setOpaque(false);
+
+        address1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        address1.setText("Shop Address");
+        pickupPanel1.add(address1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setText("Summary Items");
+        pickupPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+
+        paymentMethod1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash on Pickup", "Credit Card" }));
+        paymentMethod1.setSelectedIndex(-1);
+        paymentMethod1.setBorder(null);
+        paymentMethod1.setFocusable(false);
+        paymentMethod1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentMethod1ActionPerformed(evt);
+            }
+        });
+        pickupPanel1.add(paymentMethod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 340, 40));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Payment Method");
+        pickupPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+
+        applyCoupon1.setBackground(new java.awt.Color(52, 32, 0));
+        applyCoupon1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        applyCoupon1.setForeground(new java.awt.Color(255, 255, 255));
+        applyCoupon1.setText("Apply");
+        applyCoupon1.setBorder(null);
+        applyCoupon1.setBorderPainted(false);
+        applyCoupon1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        applyCoupon1.setFocusPainted(false);
+        applyCoupon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyCoupon1ActionPerformed(evt);
+            }
+        });
+        pickupPanel1.add(applyCoupon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, 80, 40));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Discount");
+        pickupPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, -1));
+
+        pn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
+        pn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pnActionPerformed(evt);
+            }
+        });
+        pickupPanel1.add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 340, 40));
+
+        phonenum.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        phonenum.setText("Phone Number");
+        pickupPanel1.add(phonenum, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        pickupPanel.add(pickupPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jScrollPane2.setViewportView(pickupPanel);
 
@@ -245,22 +405,94 @@ public class Checkout extends javax.swing.JFrame {
 
 
     private void pickupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickupActionPerformed
+        pick = true;
+        addrPhone();
+
         pickup.setContentAreaFilled(true);
         pickup.setBackground(new java.awt.Color(52, 32, 2));
         pickup.setForeground(new java.awt.Color(255, 255, 255));
         delivery.setForeground(new java.awt.Color(52, 32, 0));
         delivery.setBackground(new java.awt.Color(255, 255, 255));
         delivery.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 32, 0)));
-        address.setText("Shop Address");
-        addr.setText("Samjung Bldg. Nasipit Road, Talamban");
+        address1.setText("Shop Address");
+        addr1.setText("Samjung Bldg. Nasipit Road, Talamban");
 
     }//GEN-LAST:event_pickupActionPerformed
 
-    private void addrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addrActionPerformed
+    private void pnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addrActionPerformed
+    }//GEN-LAST:event_pnActionPerformed
+
+    //check if there is address and phone number
+    public void addrPhone() {
+        try {
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from customers where customerID = '" + new SignIn().custID + "'");
+
+            while (rs.next()) {
+                phoneNum = rs.getString(4);
+                addres = rs.getString(6);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        if (pick == true) {
+            pn.setText(phoneNum);
+        } else {
+            pn.setText(phoneNum);
+            addr1.setText(addres);
+        }
+
+    }
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
+        if (paymentMethod.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Please select a payment method");
+
+        } else {
+            if (pick == true) {
+                mode = "Pickup";
+
+                if (pn.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please input your phone number.");
+
+                } else {
+                    payment();
+                }
+            } else {
+                mode = "Delivery";
+
+                if (addr1.getText().equals("") || pn.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please input your delivery address and phone number.");
+
+                } else {
+                    payment();
+                }
+            }
+
+        }
+
+
+    }//GEN-LAST:event_payActionPerformed
+
+//    public void updateAddrPhone(){
+//        try {
+//              PreparedStatement ps = c.connect().prepareStatement("UPDATE customers SET address=?,phone=? WHERE customerID=? ");
+//                ps.setString(1, addr1.getText());
+//                ps.setString(2,pn.getText());
+//                ps.setInt(3,new SignIn().custID);
+//
+//            } catch (SQLException ex) {
+//                System.out.println(ex);
+//            }
+//    
+//    
+//    }
+    public void payment() {
+
         int option = JOptionPane.showConfirmDialog(null, "Confirm Payment?", "", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
 
@@ -269,27 +501,38 @@ public class Checkout extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery("select * from cart");
 
                 while (rs.next()) {
-                    String id = rs.getString(1);
-                    String qty = rs.getString(6);
+                    String name = rs.getString(2);
 
-                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO transactions (customerID, productID, qty, couponID,total, date) VALUES (?,?,?,?,?,?)");
+                    double pri = rs.getDouble(4);
+                    int qty = rs.getInt(6);
+                    double tot = pri * qty;
+
+                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO transactions (customerID, productName,price, qty, couponID,total, paymentMethod, mode) VALUES (?,?,?,?,?,?,?,?)");
                     ps.setInt(1, new SignIn().custID);
-                    ps.setString(2, id);
-                    ps.setString(3, qty);
-                    ps.setInt(4, new Cart().couponId);
+                    ps.setString(2, name);
+                    ps.setDouble(3, pri);
+
+                    ps.setString(4, String.valueOf(qty));
+                    ps.setInt(5, couponId);
+                    ps.setDouble(6, tot);
+                    ps.setString(7,paymentMethod.getSelectedItem().toString());
+                    ps.setString(8, mode);
                     ps.executeUpdate();
 
                 }
 
-                c.connect().close();
-
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
-        }
-    }//GEN-LAST:event_payActionPerformed
 
+        }
+
+//        updateAddrPhone();
+    }
     private void deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryActionPerformed
+        pick = false;
+       
+
         delivery.setContentAreaFilled(true);
         delivery.setBackground(new java.awt.Color(52, 32, 2));
         delivery.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,8 +540,9 @@ public class Checkout extends javax.swing.JFrame {
         pickup.setBackground(new java.awt.Color(255, 255, 255));
         pickup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 32, 0)));
         pickup.setBorderPainted(true);
-        address.setText("Delivery Address");
-        addr.setText("");
+        address1.setText("Delivery Address");
+        addr1.setText("");
+         addrPhone();
 
 
     }//GEN-LAST:event_deliveryActionPerformed
@@ -308,6 +552,48 @@ public class Checkout extends javax.swing.JFrame {
         new Cart().setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
+    public void summary() {
+        totl = 0;
+        try {
+            int y = 10;
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from cart");
+
+            while (rs.next()) {
+                String product = rs.getString(2);
+
+                double pr = rs.getDouble(4);
+                displayItems(y, product, pr);
+                totl += pr;
+                y += 20;
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        refresh();
+
+    }
+
+    public void displayItems(int y, String item, double price) {
+
+        JLabel jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setText(item);
+
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, y, 207, -1));
+
+        JLabel jLabel5 = new javax.swing.JLabel();
+
+        jLabel5.setText(String.valueOf(price));
+
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, y, -1, -1));
+        JLabel dis = new javax.swing.JLabel();
+
+    }
+
     private void paymentMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentMethodActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_paymentMethodActionPerformed
@@ -315,6 +601,96 @@ public class Checkout extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void couponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couponActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_couponActionPerformed
+
+    public void refresh() {
+//
+//        items.setText("$0.0");
+//        discount.setText("$0.0");
+//        totall.setText("$0.0");
+        try {
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select Sum(total) as sumItems, Sum(discount) as sumDiscount, Sum(total) as sumTotal from cart");
+
+            while (rs.next()) {
+                sumItems = rs.getDouble("sumItems");
+                double sumDiscount = rs.getDouble("sumDiscount");
+                double sumTotal = rs.getDouble("sumTotal");
+
+                double finalTotal = sumTotal - sumDiscount;
+
+                String to = String.format("%.2f", finalTotal);
+                String item = String.format("%.2f", sumItems);
+                String dis = String.format("%.2f", sumDiscount);
+
+//                items.setText("$" + item);
+                discount.setText("$" + dis);
+                total.setText("$" + to);
+//                tot = totall.getText();
+
+            }
+
+            c.connect().close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    private void applyCouponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCouponActionPerformed
+
+        String couponField = coupon.getText();
+        boolean isValid = false;
+
+        try {
+
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from coupons");
+
+            while (rs.next()) {
+                String couponCode = rs.getString(2);
+
+                if (couponField.equals(couponCode)) {
+
+                    isValid = true;
+
+                    couponId = rs.getInt(1);
+                    Double percent = rs.getDouble(3);
+                    double deduction = sumItems * percent;
+                    double to = sumItems - deduction;
+                    discount.setText(String.format("%.2f", deduction));
+                    total.setText("$" + String.format("%.2f", to));
+
+                } else {
+                    isValid = false;
+                }
+
+            }
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        if (!isValid) {
+            JOptionPane.showMessageDialog(null, "Invalid coupon.");
+
+        }
+    }//GEN-LAST:event_applyCouponActionPerformed
+
+    private void addr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addr1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addr1ActionPerformed
+
+    private void paymentMethod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentMethod1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paymentMethod1ActionPerformed
+
+    private void applyCoupon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCoupon1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_applyCoupon1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,22 +759,39 @@ public class Checkout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addr;
-    private javax.swing.JLabel address;
+    private javax.swing.JTextField addr1;
+    private javax.swing.JLabel address1;
+    private javax.swing.JButton applyCoupon;
+    private javax.swing.JButton applyCoupon1;
     private javax.swing.JLabel backButton;
     private javax.swing.JPanel body;
+    private javax.swing.JTextField coupon;
     private javax.swing.JButton delivery;
+    private javax.swing.JLabel discount;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton pay;
     private javax.swing.JComboBox<String> paymentMethod;
+    private javax.swing.JComboBox<String> paymentMethod1;
     private javax.swing.JLabel phone;
+    private javax.swing.JLabel phonenum;
     private javax.swing.JButton pickup;
     public javax.swing.JPanel pickupPanel;
+    public javax.swing.JPanel pickupPanel1;
+    private javax.swing.JTextField pn;
     private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 

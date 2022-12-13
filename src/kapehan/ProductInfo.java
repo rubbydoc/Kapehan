@@ -248,7 +248,7 @@ public class ProductInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.setVisible(false);
+        this.dispose();
         new Home().setNumCart(Integer.parseInt(cartNum.getText()));
         new Home().setVisible(true);
 
@@ -288,8 +288,16 @@ public class ProductInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_addMouseClicked
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
-        this.setVisible(false);
-        new Checkout().setVisible(true);
+        if (jComboBox1.getSelectedItem() == null || qty.getText().equals("0")) {
+            JOptionPane.showMessageDialog(null, "Please select size and quantity!");
+
+        } else {
+
+            this.dispose();
+            new Checkout().setVisible(true);
+        }
+
+
     }//GEN-LAST:event_checkoutActionPerformed
 
     private void addTocartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTocartActionPerformed
@@ -330,7 +338,7 @@ public class ProductInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_addTocartActionPerformed
 
     private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
-        this.setVisible(false);
+        this.dispose();
         new Cart().setVisible(true);
     }//GEN-LAST:event_cartMouseClicked
 

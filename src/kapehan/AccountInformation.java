@@ -248,7 +248,7 @@ public class AccountInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_emailActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.setVisible(false);
+        this.dispose();
         new Account().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 

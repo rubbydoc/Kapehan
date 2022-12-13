@@ -38,6 +38,7 @@ public class Cart extends javax.swing.JFrame {
     double percent;
     double sumItems;
     static String tot;
+    static String tota;
 
     public Cart() {
         setUndecorated(true);
@@ -75,19 +76,10 @@ public class Cart extends javax.swing.JFrame {
 
         body = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        checkoutPanel = new javax.swing.JPanel();
-        coupon = new javax.swing.JTextField();
-        applyCoupon = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        items = new javax.swing.JLabel();
-        discount = new javax.swing.JLabel();
-        totall = new javax.swing.JLabel();
-        checkout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
+        checkout = new javax.swing.JButton();
         phone = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -109,116 +101,6 @@ public class Cart extends javax.swing.JFrame {
             }
         });
         body.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
-
-        checkoutPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        coupon.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        coupon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                couponActionPerformed(evt);
-            }
-        });
-
-        applyCoupon.setBackground(new java.awt.Color(52, 32, 0));
-        applyCoupon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        applyCoupon.setForeground(new java.awt.Color(255, 255, 255));
-        applyCoupon.setText("Apply");
-        applyCoupon.setBorder(null);
-        applyCoupon.setBorderPainted(false);
-        applyCoupon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        applyCoupon.setFocusPainted(false);
-        applyCoupon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applyCouponActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setText("Items");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setText("Discount");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Total");
-
-        items.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        items.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        items.setText("$1000.00");
-
-        discount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        discount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        discount.setText("$10.00");
-
-        totall.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        totall.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        totall.setText("$900.00");
-
-        checkout.setBackground(new java.awt.Color(52, 32, 0));
-        checkout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        checkout.setForeground(new java.awt.Color(255, 255, 255));
-        checkout.setText("Checkout");
-        checkout.setBorder(null);
-        checkout.setBorderPainted(false);
-        checkout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        checkout.setFocusPainted(false);
-        checkout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkoutActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout checkoutPanelLayout = new javax.swing.GroupLayout(checkoutPanel);
-        checkoutPanel.setLayout(checkoutPanelLayout);
-        checkoutPanelLayout.setHorizontalGroup(
-            checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addComponent(coupon, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(applyCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(items, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(discount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(totall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        checkoutPanelLayout.setVerticalGroup(
-            checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(coupon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(applyCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(items))
-                .addGap(5, 5, 5)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(discount))
-                .addGap(5, 5, 5)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(totall))
-                .addGap(51, 51, 51)
-                .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        body.add(checkoutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, -1, 260));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arrow-small-left.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -244,9 +126,24 @@ public class Cart extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPane2.setViewportView(jPanel3);
 
-        body.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 390, 480));
+        body.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 390, 670));
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
+
+        checkout.setBackground(new java.awt.Color(52, 32, 0));
+        checkout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        checkout.setForeground(new java.awt.Color(255, 255, 255));
+        checkout.setText("Checkout");
+        checkout.setBorder(null);
+        checkout.setBorderPainted(false);
+        checkout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkout.setFocusPainted(false);
+        checkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutActionPerformed(evt);
+            }
+        });
+        body.add(checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 830, 260, 48));
 
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
@@ -322,43 +219,10 @@ public class Cart extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        refresh();
 
     }
 
-    public void refresh() {
-
-        items.setText("$0.0");
-        discount.setText("$0.0");
-        totall.setText("$0.0");
-        try {
-
-            Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select Sum(total) as sumItems, Sum(discount) as sumDiscount, Sum(total) as sumTotal from cart");
-
-            while (rs.next()) {
-                sumItems = rs.getDouble("sumItems");
-                double sumDiscount = rs.getDouble("sumDiscount");
-                double sumTotal = rs.getDouble("sumTotal");
-
-                double finalTotal = sumTotal - sumDiscount;
-
-                String to = String.format("%.2f", finalTotal);
-                String item = String.format("%.2f", sumItems);
-                String dis = String.format("%.2f", sumDiscount);
-
-                items.setText("$" + item);
-                discount.setText("$" + dis);
-                totall.setText("$" + to);
-                tot = totall.getText();
-
-            }
-
-            c.connect().close();
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    }
+   
 
     public void displayPanel(String product, String size, String price, String imgsource, int y, int z, String qty) {
         panel = new javax.swing.JPanel();
@@ -462,7 +326,6 @@ public class Cart extends javax.swing.JFrame {
                 }
             }
         });
-        refresh();
 
     }
 
@@ -479,51 +342,6 @@ public class Cart extends javax.swing.JFrame {
         this.setVisible(false);
         new Checkout().setVisible(true);
     }//GEN-LAST:event_checkoutActionPerformed
-
-    private void applyCouponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCouponActionPerformed
-
-        String couponField = coupon.getText();
-        boolean isValid = false;
-
-        try {
-
-            Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from coupons");
-
-            while (rs.next()) {
-                String couponCode = rs.getString(2);
-
-                if (couponField.equals(couponCode)) {
-                    isValid = true;
-
-                    couponId = rs.getInt(1);
-                    percent = rs.getDouble(3);
-                    double deduction = sumItems * percent;
-                    double to = sumItems - deduction;
-                    discount.setText(String.format("%.2f", deduction));
-                    totall.setText("$" + String.format("%.2f", to));
-                    tot = totall.getText();
-
-                } else {
-                    isValid = false;
-                }
-
-            }
-            c.connect().close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-        if (!isValid) {
-            JOptionPane.showMessageDialog(null, "Invalid coupon.");
-
-        }
-
-    }//GEN-LAST:event_applyCouponActionPerformed
-
-    private void couponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couponActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_couponActionPerformed
 
     /**
      * @param args the command line arguments
@@ -576,24 +394,15 @@ public class Cart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton applyCoupon;
     private javax.swing.JPanel body;
     private javax.swing.JButton checkout;
-    private javax.swing.JPanel checkoutPanel;
-    private javax.swing.JTextField coupon;
-    private javax.swing.JLabel discount;
-    private javax.swing.JLabel items;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
-    private javax.swing.JLabel totall;
     // End of variables declaration//GEN-END:variables
 
 }

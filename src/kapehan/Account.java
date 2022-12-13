@@ -193,7 +193,7 @@ public class Account extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.setVisible(false);
+        this.dispose();
         new Home().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 

@@ -125,6 +125,7 @@ public class Home extends javax.swing.JFrame {
         cartNum.setForeground(new java.awt.Color(255, 255, 255));
         cartNum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartNum.setText("0");
+        cartNum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(cartNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 12, 40, 50));
 
         profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user (1).png"))); // NOI18N
@@ -231,12 +232,12 @@ public class Home extends javax.swing.JFrame {
 
 
     private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
-        this.setVisible(false);
+        this.dispose();
         new Cart().setVisible(true);
     }//GEN-LAST:event_cartMouseClicked
 
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        this.setVisible(false);
+        this.dispose();
         new Account().setVisible(true);
     }//GEN-LAST:event_profileMouseClicked
 
@@ -318,7 +319,7 @@ public class Home extends javax.swing.JFrame {
                 productDes = description;
                 productPrice = price;
 
-                new Home().setVisible(false);
+                new Home().dispose();
                 new ProductInfo().setVisible(true);
 
             }
@@ -368,7 +369,7 @@ public class Home extends javax.swing.JFrame {
                 productDes = description;
                 productPrice = price;
 
-                new Home().setVisible(false);
+                new Home().dispose();
                 new ProductInfo().setVisible(true);
 
             }
@@ -422,7 +423,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JLabel cart;
-    private javax.swing.JLabel cartNum;
+    private static javax.swing.JLabel cartNum;
     private javax.swing.JLabel filter;
     private javax.swing.JLabel hot;
     private javax.swing.JLabel ice;

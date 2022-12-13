@@ -99,6 +99,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Email Address");
 
+        password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         password.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
 
         jLabel3.setBackground(new java.awt.Color(204, 102, 0));
@@ -106,6 +107,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(168, 104, 11));
         jLabel3.setText("Sign In");
 
+        email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
         email.setSelectionColor(new java.awt.Color(168, 104, 11));
 
