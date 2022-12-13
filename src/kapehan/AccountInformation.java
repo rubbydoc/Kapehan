@@ -100,6 +100,7 @@ public class AccountInformation extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arrow-small-left.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -150,6 +151,7 @@ public class AccountInformation extends javax.swing.JFrame {
 
         edit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         edit.setText("Edit");
+        edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editMouseClicked(evt);

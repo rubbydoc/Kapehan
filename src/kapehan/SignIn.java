@@ -222,7 +222,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
-
+        boolean notMatch = false;
         String pass = String.valueOf(password.getPassword());
         String mail = email.getText();
 
@@ -235,19 +235,24 @@ public class SignIn extends javax.swing.JFrame {
             while (rs.next()) {
 
                 if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(5)) & rs.getString(8).equals("active")) {
-//                    this.setVisible(false);
-//                    new CashierUI().setVisible(true);
+//                  
+                    notMatch = false;
                     custID = rs.getInt(1);
                     this.dispose();
-                    new Home().setVisible(true);
-                } else{
-                JOptionPane.showMessageDialog(null,"Incorect credentials!");  
+                    new Home().setVisible(true);break;
+                } else {
+                   
+                    notMatch = true;
                 }
 
             }
             c.connect().close();
         } catch (Exception e) {
             System.out.println(e);
+        }
+        
+        if(notMatch==true){
+         JOptionPane.showMessageDialog(null, "Incorect credentials!");
         }
     }//GEN-LAST:event_signInActionPerformed
 
