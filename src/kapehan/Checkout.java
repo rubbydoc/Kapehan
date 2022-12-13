@@ -32,6 +32,7 @@ public class Checkout extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
+        total.setText(new Cart().tot);
 
     }
 
@@ -67,21 +68,13 @@ public class Checkout extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         pickup = new javax.swing.JButton();
         addr = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
         pay = new javax.swing.JButton();
         delivery = new javax.swing.JButton();
         address = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        paymentMethod = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -142,25 +135,13 @@ public class Checkout extends javax.swing.JFrame {
         });
         pickupPanel.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 340, 40));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel9.setText("Discount");
-        pickupPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Total");
-        pickupPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, -1, -1));
+        pickupPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel11.setText("$1000.00");
-        pickupPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel12.setText("$1000.00");
-        pickupPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel15.setText("$900.00");
-        pickupPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 670, -1, -1));
+        total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        total.setText("$900.00");
+        pickupPanel.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, -1, -1));
 
         pay.setBackground(new java.awt.Color(52, 32, 0));
         pay.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -199,33 +180,16 @@ public class Checkout extends javax.swing.JFrame {
         jLabel4.setText("Payment Mehod");
         pickupPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash on Pickup", "Credit Card" }));
-        jComboBox1.setSelectedIndex(-1);
-        jComboBox1.setBorder(null);
-        jComboBox1.setFocusable(false);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        paymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash on Pickup", "Credit Card" }));
+        paymentMethod.setSelectedIndex(-1);
+        paymentMethod.setBorder(null);
+        paymentMethod.setFocusable(false);
+        paymentMethod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                paymentMethodActionPerformed(evt);
             }
         });
-        pickupPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 340, 40));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Summary Items");
-        pickupPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel5.setText("10x Tall Iced Latte");
-        pickupPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
-        pickupPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 350, 10));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel6.setText("Sub total");
-        pickupPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel13.setText("$10.00");
-        pickupPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 60, -1));
+        pickupPanel.add(paymentMethod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 340, 40));
 
         jScrollPane2.setViewportView(pickupPanel);
 
@@ -311,7 +275,7 @@ public class Checkout extends javax.swing.JFrame {
                     PreparedStatement ps = c.connect().prepareStatement("INSERT INTO transactions (customerID, productID, qty, couponID,total, date) VALUES (?,?,?,?,?,?)");
                     ps.setInt(1, new SignIn().custID);
                     ps.setString(2, id);
-                    ps.setString(3,qty);
+                    ps.setString(3, qty);
                     ps.setInt(4, new Cart().couponId);
                     ps.executeUpdate();
 
@@ -344,9 +308,9 @@ public class Checkout extends javax.swing.JFrame {
         new Cart().setVisible(true);
     }//GEN-LAST:event_backButtonMouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void paymentMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentMethodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_paymentMethodActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         System.exit(0);
@@ -424,26 +388,18 @@ public class Checkout extends javax.swing.JFrame {
     private javax.swing.JLabel backButton;
     private javax.swing.JPanel body;
     private javax.swing.JButton delivery;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton pay;
+    private javax.swing.JComboBox<String> paymentMethod;
     private javax.swing.JLabel phone;
     private javax.swing.JButton pickup;
     public javax.swing.JPanel pickupPanel;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 
 }

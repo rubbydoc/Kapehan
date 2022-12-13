@@ -37,6 +37,7 @@ public class Cart extends javax.swing.JFrame {
     int counter = 0;
     double percent;
     double sumItems;
+    static String tot;
 
     public Cart() {
         setUndecorated(true);
@@ -349,6 +350,7 @@ public class Cart extends javax.swing.JFrame {
                 items.setText("$" + item);
                 discount.setText("$" + dis);
                 totall.setText("$" + to);
+                tot = totall.getText();
 
             }
 
@@ -500,6 +502,7 @@ public class Cart extends javax.swing.JFrame {
                     double to = sumItems - deduction;
                     discount.setText(String.format("%.2f", deduction));
                     totall.setText("$" + String.format("%.2f", to));
+                    tot = totall.getText();
 
                 } else {
                     isValid = false;
