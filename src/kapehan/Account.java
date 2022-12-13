@@ -6,6 +6,8 @@ package kapehan;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 
@@ -21,31 +23,32 @@ public class Account extends javax.swing.JFrame {
     static String imgSource;
     static String productName;
     static int numcart;
+    Connect c = new Connect();
+
     public Account() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
-        
-      
+
     }
 
-    public static String getImgSource(){
-    return imgSource;
+    public static String getImgSource() {
+        return imgSource;
     }
-    
-    public static String getProductName(){
-    return productName;
+
+    public static String getProductName() {
+        return productName;
     }
-    
-    public void setNumCart(int numcart){
-        this.numcart=numcart;
+
+    public void setNumCart(int numcart) {
+        this.numcart = numcart;
     }
-    
-    public static int getNumCart(){
-    return numcart;
+
+    public static int getNumCart() {
+        return numcart;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +67,7 @@ public class Account extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -100,15 +104,17 @@ public class Account extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Sign Out");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("My Information");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -118,6 +124,7 @@ public class Account extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setText("Password");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -128,6 +135,16 @@ public class Account extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setText("Name ");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setText("Deactivate Account");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -189,12 +206,12 @@ public class Account extends javax.swing.JFrame {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         this.setVisible(false);
         new Password().setVisible(true);
-        
+
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       this.setVisible(false);
-       new SignIn().setVisible(true);
+        this.setVisible(false);
+        new SignIn().setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -206,10 +223,31 @@ public class Account extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel5MouseClicked
 
- 
-    
-    
-    
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to deactivate your account?", "Alert!", JOptionPane.OK_CANCEL_OPTION);
+
+        if (option == JOptionPane.OK_OPTION) {
+            JOptionPane.showMessageDialog(null, "Account Deactivated.");
+            try {
+
+                PreparedStatement ps = c.connect().prepareStatement("UPDATE customers SET status=? WHERE customerID=?");
+                ps.setString(1, "inactive");
+
+                ps.setInt(5, new SignIn().custID);
+
+                ps.executeUpdate();
+
+                c.connect().close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+            this.dispose();
+            new SignIn().setVisible(true);
+
+        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -269,11 +307,11 @@ public class Account extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
     // End of variables declaration//GEN-END:variables
 
-    
 }
