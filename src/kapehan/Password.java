@@ -235,6 +235,9 @@ public class Password extends javax.swing.JFrame {
 
             while (rs.next()) {
                 String pass = rs.getString(5);
+              if(currentPass.getText().equals("")||newPass.getText().equals("")||confirm.getText().equals("")){
+                  JOptionPane.showMessageDialog(null,"Empty fields."); 
+              }else{
                 if (currentPass.getText().equals(pass)) {
                     if (newPass.getText().equals(confirm.getText())) {
                         PreparedStatement ps = c.connect().prepareStatement("UPDATE customers SET password=? WHERE customerID=?");
@@ -242,6 +245,8 @@ public class Password extends javax.swing.JFrame {
                         ps.setInt(2, new SignIn().custID);
 
                         ps.executeUpdate();
+                        JOptionPane.showMessageDialog(null,"Successfuly changed the password.");
+                        
 
                     }
 
@@ -249,6 +254,7 @@ public class Password extends javax.swing.JFrame {
                 
                 }
 
+              }
             }
 
             c.connect().close();

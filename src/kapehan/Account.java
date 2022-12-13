@@ -63,6 +63,7 @@ public class Account extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -104,7 +105,7 @@ public class Account extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("My Information");
@@ -113,7 +114,7 @@ public class Account extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setText("Password");
@@ -122,7 +123,11 @@ public class Account extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setText("Name ");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -263,6 +268,7 @@ public class Account extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;

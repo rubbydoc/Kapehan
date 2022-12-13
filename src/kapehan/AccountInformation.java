@@ -33,6 +33,7 @@ public class AccountInformation extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
+        displayInformation();
 
     }
 
@@ -255,6 +256,11 @@ public class AccountInformation extends javax.swing.JFrame {
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
 
         fullName.setEnabled(true);
+        fullName.setEnabled(true);
+        email.setEnabled(true);
+        phoneNum.setEnabled(true);
+        address.setEnabled(true);
+        
 
 
     }//GEN-LAST:event_editMouseClicked
