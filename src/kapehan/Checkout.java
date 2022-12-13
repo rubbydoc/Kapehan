@@ -461,6 +461,10 @@ public class Checkout extends javax.swing.JFrame {
 
                 } else {
                     payment();
+                    deleteCart();
+                    JOptionPane.showMessageDialog(null, "Thank you for purchasing. Your order is being processed.");
+                    this.dispose();
+                    new Home().setVisible(true);
                 }
             } else {
                 mode = "Delivery";
@@ -470,6 +474,10 @@ public class Checkout extends javax.swing.JFrame {
 
                 } else {
                     payment();
+                    deleteCart();
+                    JOptionPane.showMessageDialog(null, "Thank you for purchasing. Your order is being processed.");
+                    this.dispose();
+                    new Home().setVisible(true);
                 }
             }
 
@@ -477,6 +485,19 @@ public class Checkout extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_payActionPerformed
+
+    public void deleteCart() {
+        try {
+
+            PreparedStatement ps = c.connect().prepareStatement("DELETE FROM cart ");
+
+            ps.executeUpdate();
+
+            c.connect().close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
 //    public void updateAddrPhone(){
 //        try {
@@ -515,7 +536,7 @@ public class Checkout extends javax.swing.JFrame {
                     ps.setString(4, String.valueOf(qty));
                     ps.setInt(5, couponId);
                     ps.setDouble(6, tot);
-                    ps.setString(7,paymentMethod.getSelectedItem().toString());
+                    ps.setString(7, paymentMethod.getSelectedItem().toString());
                     ps.setString(8, mode);
                     ps.executeUpdate();
 
@@ -531,7 +552,6 @@ public class Checkout extends javax.swing.JFrame {
     }
     private void deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryActionPerformed
         pick = false;
-       
 
         delivery.setContentAreaFilled(true);
         delivery.setBackground(new java.awt.Color(52, 32, 2));
@@ -542,7 +562,7 @@ public class Checkout extends javax.swing.JFrame {
         pickup.setBorderPainted(true);
         address1.setText("Delivery Address");
         addr1.setText("");
-         addrPhone();
+        addrPhone();
 
 
     }//GEN-LAST:event_deliveryActionPerformed
