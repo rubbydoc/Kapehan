@@ -583,9 +583,10 @@ public class Checkout extends javax.swing.JFrame {
 
             while (rs.next()) {
                 String product = rs.getString(2);
+                String quantity = rs.getString(6);
 
                 double pr = rs.getDouble(4);
-                displayItems(y, product, pr);
+                displayItems(y, product, pr,quantity );
                 totl += pr;
                 y += 20;
 
@@ -598,11 +599,11 @@ public class Checkout extends javax.swing.JFrame {
 
     }
 
-    public void displayItems(int y, String item, double price) {
+    public void displayItems(int y, String item, double price , String qty) {
 
         JLabel jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText(item);
+        jLabel1.setText(qty+"x " + item);
 
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, y, 207, -1));
 
