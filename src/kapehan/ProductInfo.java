@@ -73,6 +73,7 @@ public class ProductInfo extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         checkout = new javax.swing.JButton();
         addTocart = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -202,6 +203,15 @@ public class ProductInfo extends javax.swing.JFrame {
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
 
+        jLabel4.setText("jLabel1");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        body.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
+
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
 
@@ -285,18 +295,22 @@ public class ProductInfo extends javax.swing.JFrame {
     private void addTocartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTocartActionPerformed
 //        JOptionPane.showMessageDialog(null, "Added to cart.", "I love Coffee!", JOptionPane.PLAIN_MESSAGE);
 
-        int option = JOptionPane.showConfirmDialog(null, "Add to Cart?", "I love coffee!", JOptionPane.OK_CANCEL_OPTION);
-        if (option == JOptionPane.OK_OPTION) {
-            String size = jComboBox1.getSelectedItem().toString();
+//        String size = jComboBox1.getSelectedItem().toString();
+        if (jComboBox1.getSelectedItem() == null || qty.getText().equals("0")) {
+            JOptionPane.showMessageDialog(null, "Please select size and quantity!");
 
-            if (size.equals("")|| qty.getText().equals("0")) {
+        } else {
+            int option = JOptionPane.showConfirmDialog(null, "Add to Cart?", "I love coffee!", JOptionPane.OK_CANCEL_OPTION);
+
+            if (option == JOptionPane.OK_OPTION) {
+
                 int current = Integer.parseInt(cartNum.getText());
                 int newVal = Integer.parseInt(qty.getText());
                 cartNum.setText(String.valueOf(current + newVal));
                 try {
                     PreparedStatement ps = c.connect().prepareStatement("INSERT INTO cart (product, size, price, discount,qty) VALUES (?,?,?,?,?)");
                     ps.setString(1, prodName.getText());
-                    ps.setString(2, size);
+                    ps.setString(2, jComboBox1.getSelectedItem().toString());
                     ps.setString(3, new Home().getProductPrice());
                     ps.setString(4, "0");
                     ps.setString(5, qty.getText());
@@ -311,12 +325,17 @@ public class ProductInfo extends javax.swing.JFrame {
 
         }
 
+
     }//GEN-LAST:event_addTocartActionPerformed
 
     private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
         this.setVisible(false);
         new Cart().setVisible(true);
     }//GEN-LAST:event_cartMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -380,6 +399,7 @@ public class ProductInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;

@@ -73,6 +73,7 @@ public class Password extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         confirm = new javax.swing.JTextField();
         save = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -163,6 +164,15 @@ public class Password extends javax.swing.JFrame {
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
 
+        jLabel6.setText("jLabel1");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        body.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
+
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
 
@@ -250,6 +260,10 @@ public class Password extends javax.swing.JFrame {
         
     }//GEN-LAST:event_saveActionPerformed
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -325,6 +339,7 @@ public class Password extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;

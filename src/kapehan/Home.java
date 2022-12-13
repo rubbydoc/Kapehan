@@ -99,6 +99,7 @@ public class Home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         hot = new javax.swing.JLabel();
         ice = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -178,6 +179,15 @@ public class Home extends javax.swing.JFrame {
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
 
+        jLabel1.setText("jLabel1");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        body.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
+
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
 
@@ -230,6 +240,10 @@ public class Home extends javax.swing.JFrame {
         new Account().setVisible(true);
     }//GEN-LAST:event_profileMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     public void displayProducts() {
         try {
             int i = 330;
@@ -237,13 +251,12 @@ public class Home extends javax.swing.JFrame {
             int l = 330;
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from products where status='active'");
+            ResultSet rs = stmt.executeQuery("select * from products where status='available'");
 
             while (rs.next()) {
                 String productName = rs.getString(2);
                 String productPrice = rs.getString(4);
                 String des = rs.getString(3);
-                
 
                 if (rs.getInt(1) % 2 == 1) {
                     columnOne(productName, productPrice, i, "/img/coffee/" + productName + ".png", des);
@@ -413,6 +426,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel filter;
     private javax.swing.JLabel hot;
     private javax.swing.JLabel ice;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel3;

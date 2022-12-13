@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,6 +52,7 @@ public class SignIn extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -166,6 +168,15 @@ public class SignIn extends javax.swing.JFrame {
 
         body.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 390, 800));
 
+        jLabel1.setText("jLabel1");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        body.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
+
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
 
@@ -217,7 +228,7 @@ public class SignIn extends javax.swing.JFrame {
 //            
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from users");
+            ResultSet rs = stmt.executeQuery("select * from customers");
 
             while (rs.next()) {
 
@@ -227,6 +238,8 @@ public class SignIn extends javax.swing.JFrame {
                     custID = rs.getInt(1);
                     this.dispose();
                     new Home().setVisible(true);
+                } else{
+                JOptionPane.showMessageDialog(null,"Incorect credentials!");  
                 }
 
             }
@@ -235,6 +248,10 @@ public class SignIn extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_signInActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -275,6 +292,7 @@ public class SignIn extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JTextField email;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
