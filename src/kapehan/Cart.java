@@ -35,28 +35,30 @@ public class Cart extends javax.swing.JFrame {
     JPanel panel;
     JLabel priceLabel;
     int counter = 0;
-
+    double percent;
+    double sumItems;
+    
     public Cart() {
         setUndecorated(true);
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
         displayCart();
-
+        
     }
-
+    
     public static String getImgSource() {
         return imgSource;
     }
-
+    
     public static String getProductName() {
         return productName;
     }
-
+    
     public void setNumCart(int numcart) {
         this.numcart = numcart;
     }
-
+    
     public static int getNumCart() {
         return numcart;
     }
@@ -289,16 +291,16 @@ public class Cart extends javax.swing.JFrame {
         this.setVisible(false);
         new Home().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
-
+    
     public void displayCart() {
         try {
             int i = 80;
             int z = 530;
             int a = 570;
-
+            
             Statement stmt = c.connect().createStatement();
             ResultSet rs = stmt.executeQuery("select * from cart");
-
+            
             while (rs.next()) {
                 String product = rs.getString(2);
                 String size = rs.getString(3);
@@ -307,128 +309,127 @@ public class Cart extends javax.swing.JFrame {
                 String qty = rs.getString(6);
                 String id = rs.getString(1);
                 counter++;
-
+                
                 displayPanel(product, size, price, "/img/coffee/" + product + ".png", i, z, qty);
                 delete(id);
-
+                
                 i += 130;
                 z += 120;
-
+                
             }
             c.connect().close();
         } catch (SQLException e) {
             System.out.println(e);
         }
-
+        
         try {
             Statement stmt = c.connect().createStatement();
             ResultSet rs = stmt.executeQuery("select Sum(total) as sumItems, Sum(discount) as sumDiscount, Sum(total) as sumTotal from cart");
-
+            
             while (rs.next()) {
-                double sumItems = rs.getDouble("sumItems");
+                sumItems = rs.getDouble("sumItems");
                 double sumDiscount = rs.getDouble("sumDiscount");
                 double sumTotal = rs.getDouble("sumTotal");
                 
                 double finalTotal = sumTotal - sumDiscount;
-
+                
                 String to = String.format("%.2f", finalTotal);
                 String item = String.format("%.2f", sumItems);
                 String dis = String.format("%.2f", sumDiscount);
                 
-                
                 items.setText("$" + item);
-                discount.setText("$"+dis);
+                discount.setText("$" + dis);
                 totall.setText("$" + to);
-
+                
             }
-
+            
             c.connect().close();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-
+    
     public void displayPanel(String product, String size, String price, String imgsource, int y, int z, String qty) {
         panel = new javax.swing.JPanel();
-
+        
         panel.setBackground(new java.awt.Color(255, 255, 255));
-
+        
         panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(168, 104, 11), 1, true));
-
+        
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        
         jPanel3.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, y, 360, 130));
         JLabel label = new javax.swing.JLabel();
-
+        
         label.setBackground(new java.awt.Color(255, 255, 255));
-
+        
         label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         label.setText(product);
-
+        
         panel.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
         JLabel sizeLabel = new javax.swing.JLabel();
-
+        
         sizeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         sizeLabel.setText(size);
-
+        
         panel.add(sizeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 45, 70, 20));
-
+        
         priceLabel = new javax.swing.JLabel();
-
+        
         priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         priceLabel.setText("$" + price);
-
+        
         panel.add(priceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
         JLabel img = new javax.swing.JLabel();
-
+        
         img.setIcon(new javax.swing.ImageIcon(getClass().getResource(imgsource))); // NOI18N
 
         img.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
+        
         panel.add(img, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, 130));
-
+        
         JLabel qtyLabel = new javax.swing.JLabel();
-
+        
         qtyLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         qtyLabel.setText(qty + "x");
-
+        
         panel.add(qtyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
         trashICon = new javax.swing.JLabel();
-
+        
         trashICon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trash.png"))); // NOI18N
 
         trashICon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
+        
         panel.add(trashICon, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 100, -1, -1));
-
+        
     }
-
+    
     public void delete(String id) {
-
+        
         trashICon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-
+                
                 jPanel3.removeAll();
                 jPanel3.repaint();
                 jPanel3.revalidate();
-
+                
                 try {
-
+                    
                     PreparedStatement ps = c.connect().prepareStatement("DELETE FROM cart WHERE cartID=?");
                     ps.setString(1, id);
-
+                    
                     ps.executeUpdate();
-
+                    
                     int i = 80;
                     int z = 530;
-
+                    
                     Statement stmt = c.connect().createStatement();
                     ResultSet rs = stmt.executeQuery("select * from cart");
-
+                    
                     while (rs.next()) {
                         String product = rs.getString(2);
                         String size = rs.getString(3);
@@ -436,23 +437,23 @@ public class Cart extends javax.swing.JFrame {
                         String discount = rs.getString(5);
                         String qty = rs.getString(6);
                         String id = rs.getString(1);
-
+                        
                         displayPanel(product, size, price, "/img/coffee/" + product + ".png", i, z, qty);
                         delete(id);
                         i += 130;
                         z += 120;
-
+                        
                     }
-
+                    
                     c.connect().close();
                 } catch (SQLException e) {
                     System.out.println(e);
                 }
             }
         });
-
+        
     }
-
+    
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
@@ -468,33 +469,47 @@ public class Cart extends javax.swing.JFrame {
     }//GEN-LAST:event_checkoutActionPerformed
 
     private void applyCouponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCouponActionPerformed
-
+        
         String couponField = coupon.getText();
         boolean isValid = false;
+        
         try {
-
+            
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from coupon");
-
+            ResultSet rs = stmt.executeQuery("select * from coupons");
+            
             while (rs.next()) {
                 String couponCode = rs.getString(2);
-                couponId = rs.getInt(1);
-
+                
                 if (couponField.equals(couponCode)) {
                     isValid = true;
-
+                    
+                    couponId = rs.getInt(1);
+                    percent = rs.getDouble(3);
+                    double deduction = sumItems * percent;
+                    double to = sumItems - deduction;
+                    discount.setText(String.format("%.2f", deduction));
+                    totall.setText("$" + String.format("%.2f", to));
+                    
                 } else {
                     isValid = false;
                 }
-
+                
             }
             c.connect().close();
         } catch (SQLException e) {
             System.out.println(e);
         }
+        
+        if (!isValid) {
+            JOptionPane.showMessageDialog(null, "Invalid coupon.");
+            
+        }
 
     }//GEN-LAST:event_applyCouponActionPerformed
 
+    
+   
     private void couponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couponActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_couponActionPerformed
