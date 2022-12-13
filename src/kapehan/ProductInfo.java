@@ -303,17 +303,18 @@ public class ProductInfo extends javax.swing.JFrame {
             int option = JOptionPane.showConfirmDialog(null, "Add to Cart?", "I love coffee!", JOptionPane.OK_CANCEL_OPTION);
 
             if (option == JOptionPane.OK_OPTION) {
-
+                double total = Double.parseDouble(new Home().getProductPrice()) * Double.parseDouble(qty.getText());
                 int current = Integer.parseInt(cartNum.getText());
                 int newVal = Integer.parseInt(qty.getText());
                 cartNum.setText(String.valueOf(current + newVal));
                 try {
-                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO cart (product, size, price, discount,qty) VALUES (?,?,?,?,?)");
+                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO cart (product, size, price, discount,qty, total) VALUES (?,?,?,?,?,?)");
                     ps.setString(1, prodName.getText());
                     ps.setString(2, jComboBox1.getSelectedItem().toString());
                     ps.setString(3, new Home().getProductPrice());
                     ps.setString(4, "0");
                     ps.setString(5, qty.getText());
+                    ps.setDouble(6, total);
 
                     ps.executeUpdate();
                     c.connect().close();

@@ -79,8 +79,8 @@ public class Cart extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         items = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        discount = new javax.swing.JLabel();
+        totall = new javax.swing.JLabel();
         checkout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -140,13 +140,16 @@ public class Cart extends javax.swing.JFrame {
         jLabel10.setText("Total");
 
         items.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        items.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         items.setText("$1000.00");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("$10.00");
+        discount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        discount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        discount.setText("$10.00");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel15.setText("$900.00");
+        totall.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        totall.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        totall.setText("$900.00");
 
         checkout.setBackground(new java.awt.Color(52, 32, 0));
         checkout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -168,26 +171,24 @@ public class Cart extends javax.swing.JFrame {
             checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(checkoutPanelLayout.createSequentialGroup()
                         .addComponent(coupon, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(applyCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(236, 236, 236)
-                        .addComponent(items))
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(230, 230, 230)
-                        .addComponent(jLabel12))
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(251, 251, 251)
-                        .addComponent(jLabel15))
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(checkoutPanelLayout.createSequentialGroup()
+                        .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(items, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(discount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totall, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         checkoutPanelLayout.setVerticalGroup(
@@ -198,19 +199,19 @@ public class Cart extends javax.swing.JFrame {
                     .addComponent(coupon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(applyCoupon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(items))
                 .addGap(5, 5, 5)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel12))
+                    .addComponent(discount))
                 .addGap(5, 5, 5)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel15))
-                .addGap(59, 59, 59)
-                .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(totall))
+                .addGap(51, 51, 51)
+                .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -319,19 +320,32 @@ public class Cart extends javax.swing.JFrame {
             System.out.println(e);
         }
 
-//        try {
-//            Statement stmt = c.connect().createStatement();
-//            ResultSet rs = stmt.executeQuery("select Sum(price) as sumItems from cart");
-//
-//            while (rs.next()) {
-//                String sum = rs.getString("sumItems");
-//                items.setText(sum);
-//             
-//            }
-//            c.connect().close();
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
+        try {
+            Statement stmt = c.connect().createStatement();
+            ResultSet rs = stmt.executeQuery("select Sum(total) as sumItems, Sum(discount) as sumDiscount, Sum(total) as sumTotal from cart");
+
+            while (rs.next()) {
+                double sumItems = rs.getDouble("sumItems");
+                double sumDiscount = rs.getDouble("sumDiscount");
+                double sumTotal = rs.getDouble("sumTotal");
+                
+                double finalTotal = sumTotal - sumDiscount;
+
+                String to = String.format("%.2f", finalTotal);
+                String item = String.format("%.2f", sumItems);
+                String dis = String.format("%.2f", sumDiscount);
+                
+                
+                items.setText("$" + item);
+                discount.setText("$"+dis);
+                totall.setText("$" + to);
+
+            }
+
+            c.connect().close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     public void displayPanel(String product, String size, String price, String imgsource, int y, int z, String qty) {
@@ -541,11 +555,10 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JButton checkout;
     private javax.swing.JPanel checkoutPanel;
     private javax.swing.JTextField coupon;
+    private javax.swing.JLabel discount;
     private javax.swing.JLabel items;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
@@ -554,6 +567,7 @@ public class Cart extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel phone;
+    private javax.swing.JLabel totall;
     // End of variables declaration//GEN-END:variables
 
 }

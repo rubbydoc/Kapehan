@@ -422,7 +422,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JLabel cart;
-    private static javax.swing.JLabel cartNum;
+    private javax.swing.JLabel cartNum;
     private javax.swing.JLabel filter;
     private javax.swing.JLabel hot;
     private javax.swing.JLabel ice;
