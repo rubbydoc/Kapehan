@@ -34,6 +34,7 @@ public class Cart extends javax.swing.JFrame {
     JLabel trashICon;
     JPanel panel;
     JLabel priceLabel;
+    int counter = 0;
 
     public Cart() {
         setUndecorated(true);
@@ -71,8 +72,6 @@ public class Cart extends javax.swing.JFrame {
 
         body = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
         checkoutPanel = new javax.swing.JPanel();
         coupon = new javax.swing.JTextField();
         applyCoupon = new javax.swing.JButton();
@@ -84,8 +83,10 @@ public class Cart extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         checkout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
         phone = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,20 +106,6 @@ public class Cart extends javax.swing.JFrame {
             }
         });
         body.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 70, 30));
-
-        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setBorder(null);
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jScrollPane2.setViewportView(null);
-        JScrollBar vertical = jScrollPane2.getVerticalScrollBar();
-        vertical.setPreferredSize( new Dimension(1,0) );
-
-        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         checkoutPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -227,7 +214,7 @@ public class Cart extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.add(checkoutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 380, 260));
+        body.add(checkoutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, -1, 260));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/arrow-small-left.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -236,20 +223,33 @@ public class Cart extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        body.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("My Cart");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jScrollPane2.setViewportView(null);
+        JScrollBar vertical = jScrollPane2.getVerticalScrollBar();
+        vertical.setPreferredSize( new Dimension(1,0) );
 
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPane2.setViewportView(jPanel3);
 
-        body.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 390, 800));
+        body.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 390, 480));
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
 
         phone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/phone  (533 × 948 px) (1).png"))); // NOI18N
         body.add(phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 0, 560, 940));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("My Cart");
+        body.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -293,6 +293,7 @@ public class Cart extends javax.swing.JFrame {
         try {
             int i = 80;
             int z = 530;
+            int a = 570;
 
             Statement stmt = c.connect().createStatement();
             ResultSet rs = stmt.executeQuery("select * from cart");
@@ -304,6 +305,7 @@ public class Cart extends javax.swing.JFrame {
                 String discount = rs.getString(5);
                 String qty = rs.getString(6);
                 String id = rs.getString(1);
+                counter++;
 
                 displayPanel(product, size, price, "/img/coffee/" + product + ".png", i, z, qty);
                 delete(id);
@@ -374,7 +376,6 @@ public class Cart extends javax.swing.JFrame {
 
         panel.add(img, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, -1, 130));
 
-        jPanel3.add(checkoutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, z, 380, 260));
         JLabel qtyLabel = new javax.swing.JLabel();
 
         qtyLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -396,48 +397,47 @@ public class Cart extends javax.swing.JFrame {
 
         trashICon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-//                target.removeAll();
-//                target.repaint();
-//                target.revalidate();
 
-//                try {
-//
-//                    PreparedStatement ps = c.connect().prepareStatement("DELETE FROM cart WHERE cartID=?");
-//                    ps.setString(1, id);
-//
-//                    ps.executeUpdate();
-//
-//                    int i = 80;
-//                    int z = 530;
-//
-//                    Statement stmt = c.connect().createStatement();
-//                    ResultSet rs = stmt.executeQuery("select * from cart");
-//
-//                    while (rs.next()) {
-//                        String product = rs.getString(2);
-//                        String size = rs.getString(3);
-//                        String price = rs.getString(4);
-//                        String discount = rs.getString(5);
-//                        String qty = rs.getString(6);
-//                        String id = rs.getString(1);
-//
-//                        displayPanel(product, size, price, "/img/coffee/" + product + ".png", i, z, qty);
-//
-//                        i += 130;
-//                        z += 120;
-//
-//                    }
-//
-//                    c.connect().close();
-//                } catch (SQLException e) {
-//                    System.out.println(e);
-//                }
+                jPanel3.removeAll();
+                jPanel3.repaint();
+                jPanel3.revalidate();
+
+                try {
+
+                    PreparedStatement ps = c.connect().prepareStatement("DELETE FROM cart WHERE cartID=?");
+                    ps.setString(1, id);
+
+                    ps.executeUpdate();
+
+                    int i = 80;
+                    int z = 530;
+
+                    Statement stmt = c.connect().createStatement();
+                    ResultSet rs = stmt.executeQuery("select * from cart");
+
+                    while (rs.next()) {
+                        String product = rs.getString(2);
+                        String size = rs.getString(3);
+                        String price = rs.getString(4);
+                        String discount = rs.getString(5);
+                        String qty = rs.getString(6);
+                        String id = rs.getString(1);
+
+                        displayPanel(product, size, price, "/img/coffee/" + product + ".png", i, z, qty);
+                        delete(id);
+                        i += 130;
+                        z += 120;
+
+                    }
+
+                    c.connect().close();
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
             }
         });
 
     }
-
-   
 
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
