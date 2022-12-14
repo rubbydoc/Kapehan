@@ -252,12 +252,12 @@ public class ProductInfo extends javax.swing.JFrame {
         int currentQty = Integer.parseInt(qty.getText());
 
 //        String currentVal = cartNum.getText();
- if (Integer.parseInt(qty.getText()) < 1) {
+        if (Integer.parseInt(qty.getText()) < 1) {
 
-            } else {
-                currentQty--;
-                qty.setText(String.valueOf(currentQty));
-            }
+        } else {
+            currentQty--;
+            qty.setText(String.valueOf(currentQty));
+        }
 //        if (currentVal.equals("0")) {
 //        } else {
 //
@@ -309,13 +309,12 @@ public class ProductInfo extends javax.swing.JFrame {
 //                int newVal = Integer.parseInt(qty.getText());
 //                cartNum.setText(String.valueOf(current + newVal));
                 try {
-                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO cart (product, size, price, discount,qty, total) VALUES (?,?,?,?,?,?)");
+                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO cart (product, size, price, qty, total) VALUES (?,?,?,?,?)");
                     ps.setString(1, prodName.getText());
                     ps.setString(2, jComboBox1.getSelectedItem().toString());
                     ps.setString(3, new Home().getProductPrice());
-                    ps.setString(4, "0");
-                    ps.setString(5, qty.getText());
-                    ps.setDouble(6, total);
+                    ps.setString(4, qty.getText());
+                    ps.setDouble(5, total);
 
                     ps.executeUpdate();
                     c.connect().close();

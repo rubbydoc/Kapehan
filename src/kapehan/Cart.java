@@ -10,8 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -203,8 +201,7 @@ public class Cart extends javax.swing.JFrame {
                 String product = rs.getString(2);
                 String size = rs.getString(3);
                 String price = rs.getString(4);
-                String discount = rs.getString(5);
-                String qty = rs.getString(6);
+                String qty = rs.getString(5);
                 String id = rs.getString(1);
                 counter++;
 
@@ -309,8 +306,7 @@ public class Cart extends javax.swing.JFrame {
                         String product = rs.getString(2);
                         String size = rs.getString(3);
                         String price = rs.getString(4);
-                        String discount = rs.getString(5);
-                        String qty = rs.getString(6);
+                        String qty = rs.getString(5);
                         String id = rs.getString(1);
 
                         displayPanel(product, size, price, "/img/coffee/" + product + ".png", i, z, qty);

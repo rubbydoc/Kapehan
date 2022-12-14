@@ -13,7 +13,6 @@ import java.sql.Statement;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
-import static kapehan.Cart.tot;
 
 /**
  *
@@ -89,9 +88,6 @@ public class Checkout extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         paymentMethod = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        coupon = new javax.swing.JTextField();
-        applyCoupon = new javax.swing.JButton();
-        discount = new javax.swing.JLabel();
         pickupPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         addr1 = new javax.swing.JTextField();
@@ -101,8 +97,6 @@ public class Checkout extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         paymentMethod1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        applyCoupon1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         pn = new javax.swing.JTextField();
         phonenum = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -208,7 +202,7 @@ public class Checkout extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPane3.setViewportView(jPanel3);
 
-        pickupPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 390, 140));
+        pickupPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 390, 220));
         jScrollPane2.setOpaque(false);
         jScrollPane2.getViewport().setOpaque(false);
 
@@ -230,34 +224,6 @@ public class Checkout extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Payment Method");
         pickupPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        coupon.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
-        coupon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                couponActionPerformed(evt);
-            }
-        });
-        pickupPanel.add(coupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 260, 40));
-
-        applyCoupon.setBackground(new java.awt.Color(52, 32, 0));
-        applyCoupon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        applyCoupon.setForeground(new java.awt.Color(255, 255, 255));
-        applyCoupon.setText("Apply");
-        applyCoupon.setBorder(null);
-        applyCoupon.setBorderPainted(false);
-        applyCoupon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        applyCoupon.setFocusPainted(false);
-        applyCoupon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applyCouponActionPerformed(evt);
-            }
-        });
-        pickupPanel.add(applyCoupon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, 80, 40));
-
-        discount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        discount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        discount.setText("jLabel5");
-        pickupPanel.add(discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 660, -1, -1));
 
         pickupPanel1.setBackground(new java.awt.Color(255, 255, 255));
         pickupPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -317,25 +283,6 @@ public class Checkout extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Payment Method");
         pickupPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        applyCoupon1.setBackground(new java.awt.Color(52, 32, 0));
-        applyCoupon1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        applyCoupon1.setForeground(new java.awt.Color(255, 255, 255));
-        applyCoupon1.setText("Apply");
-        applyCoupon1.setBorder(null);
-        applyCoupon1.setBorderPainted(false);
-        applyCoupon1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        applyCoupon1.setFocusPainted(false);
-        applyCoupon1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applyCoupon1ActionPerformed(evt);
-            }
-        });
-        pickupPanel1.add(applyCoupon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 600, 80, 40));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Discount");
-        pickupPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, -1));
 
         pn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
@@ -529,16 +476,15 @@ public class Checkout extends javax.swing.JFrame {
                     int qty = rs.getInt(6);
                     double tot = pri * qty;
 
-                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO transactions (customerID, productName,price, qty, couponID,total, paymentMethod, mode) VALUES (?,?,?,?,?,?,?,?)");
+                    PreparedStatement ps = c.connect().prepareStatement("INSERT INTO transactions (customerID, productName,price, qty,total, paymentMethod, mode) VALUES (?,?,?,?,?,?,?)");
                     ps.setInt(1, new SignIn().custID);
                     ps.setString(2, name);
                     ps.setDouble(3, pri);
 
                     ps.setString(4, String.valueOf(qty));
-                    ps.setInt(5, couponId);
-                    ps.setDouble(6, tot);
-                    ps.setString(7, paymentMethod.getSelectedItem().toString());
-                    ps.setString(8, mode);
+                    ps.setDouble(5, tot);
+                    ps.setString(6, paymentMethod.getSelectedItem().toString());
+                    ps.setString(7, mode);
                     ps.executeUpdate();
 
                 }
@@ -583,7 +529,7 @@ public class Checkout extends javax.swing.JFrame {
 
             while (rs.next()) {
                 String product = rs.getString(2);
-                String quantity = rs.getString(6);
+                String quantity = rs.getString(5);
 
                 double pr = rs.getDouble(4);
                 displayItems(y, product, pr,quantity );
@@ -624,10 +570,6 @@ public class Checkout extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void couponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couponActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_couponActionPerformed
-
     public void refresh() {
 //
 //        items.setText("$0.0");
@@ -636,22 +578,16 @@ public class Checkout extends javax.swing.JFrame {
         try {
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select Sum(total) as sumItems, Sum(discount) as sumDiscount, Sum(total) as sumTotal from cart");
+            ResultSet rs = stmt.executeQuery("select Sum(total) as sumItems from cart");
 
             while (rs.next()) {
                 sumItems = rs.getDouble("sumItems");
-                double sumDiscount = rs.getDouble("sumDiscount");
-                double sumTotal = rs.getDouble("sumTotal");
 
-                double finalTotal = sumTotal - sumDiscount;
 
-                String to = String.format("%.2f", finalTotal);
                 String item = String.format("%.2f", sumItems);
-                String dis = String.format("%.2f", sumDiscount);
 
 //                items.setText("$" + item);
-                discount.setText("$" + dis);
-                total.setText("$" + to);
+                total.setText("$" + item);
 //                tot = totall.getText();
 
             }
@@ -662,46 +598,6 @@ public class Checkout extends javax.swing.JFrame {
         }
     }
 
-    private void applyCouponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCouponActionPerformed
-
-        String couponField = coupon.getText();
-        boolean isValid = false;
-
-        try {
-
-            Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from coupons");
-
-            while (rs.next()) {
-                String couponCode = rs.getString(2);
-
-                if (couponField.equals(couponCode)) {
-
-                    isValid = true;
-
-                    couponId = rs.getInt(1);
-                    Double percent = rs.getDouble(3);
-                    double deduction = sumItems * percent;
-                    double to = sumItems - deduction;
-                    discount.setText(String.format("%.2f", deduction));
-                    total.setText("$" + String.format("%.2f", to));
-
-                } else {
-                    isValid = false;
-                }
-
-            }
-            c.connect().close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-        if (!isValid) {
-            JOptionPane.showMessageDialog(null, "Invalid coupon.");
-
-        }
-    }//GEN-LAST:event_applyCouponActionPerformed
-
     private void addr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addr1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addr1ActionPerformed
@@ -709,10 +605,6 @@ public class Checkout extends javax.swing.JFrame {
     private void paymentMethod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentMethod1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_paymentMethod1ActionPerformed
-
-    private void applyCoupon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyCoupon1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_applyCoupon1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -783,20 +675,15 @@ public class Checkout extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addr1;
     private javax.swing.JLabel address1;
-    private javax.swing.JButton applyCoupon;
-    private javax.swing.JButton applyCoupon1;
     private javax.swing.JLabel backButton;
     private javax.swing.JPanel body;
-    private javax.swing.JTextField coupon;
     private javax.swing.JButton delivery;
-    private javax.swing.JLabel discount;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

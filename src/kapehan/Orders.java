@@ -80,10 +80,8 @@ public class Orders extends javax.swing.JFrame {
         product = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
         qty = new javax.swing.JLabel();
-        dis = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
@@ -124,13 +122,13 @@ public class Orders extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Coffee", "Price", "Qty", "Discount", "Total", "Date"
+                "Coffee", "Price", "Qty", "Total", "Date"
             }
         ));
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -155,18 +153,12 @@ public class Orders extends javax.swing.JFrame {
         qty.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel3.add(qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 730, 50, -1));
 
-        dis.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel3.add(dis, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 750, -1, -1));
-
         total.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel3.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 780, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Details");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, -1));
-
-        jLabel4.setText("Discount");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 760, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Total");
@@ -226,19 +218,19 @@ public class Orders extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         this.dispose();
-        new Home().setVisible(true);
+        new Account().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     public void display() {
         try {
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from transactions where customerID='1'");
+            ResultSet rs = stmt.executeQuery("select * from transactions where customerID='"+new SignIn().custID+"'");
             DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
             tm.setRowCount(0);
 
             while (rs.next()) {
-                Object o[] = {rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)};
+                Object o[] = {rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)};
                 tm.addRow(o);
 
             }
@@ -259,16 +251,14 @@ public class Orders extends javax.swing.JFrame {
         String pro = jTable1.getModel().getValueAt(row, 0).toString();
         String pr = jTable1.getModel().getValueAt(row, 1).toString();
         String qt = jTable1.getModel().getValueAt(row, 2).toString();
-        String disc = jTable1.getModel().getValueAt(row, 3).toString();
-        String tot = jTable1.getModel().getValueAt(row, 4).toString();
-        String dat = jTable1.getModel().getValueAt(row, 5).toString();
+        String tot = jTable1.getModel().getValueAt(row, 3).toString();
+        String dat = jTable1.getModel().getValueAt(row, 4).toString();
         
         date.setText(dat);
         product.setText(pro);
-        price.setText(pr);
+        price.setText("$"+pr);
         qty.setText(qt);
-        dis.setText(disc);
-        total.setText(tot);
+        total.setText("$"+tot);
         
 
 
@@ -343,11 +333,9 @@ public class Orders extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JLabel date;
-    private javax.swing.JLabel dis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

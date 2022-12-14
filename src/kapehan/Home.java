@@ -344,7 +344,7 @@ public class Home extends javax.swing.JFrame {
             int l = 40;
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from products where status='available' and category ='Iced'");
+            ResultSet rs = stmt.executeQuery("select * from products where status='available' and category ='Ice'");
 
             while (rs.next()) {
                 String productName = rs.getString(2);
