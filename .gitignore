@@ -1,3 +1,5 @@
 /dist/
 /build/
 /nbproject/private/
+/src/AdminPanel/build/
+/src/AdminPanel/nbproject/private/
