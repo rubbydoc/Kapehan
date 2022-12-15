@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(240, 227, 177));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Email Address");
@@ -67,7 +67,7 @@ public class Login extends javax.swing.JFrame {
         password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         password.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 32, 0), 1, true));
 
-        signIn.setBackground(new java.awt.Color(52, 32, 0));
+        signIn.setBackground(new java.awt.Color(150, 112, 64));
         signIn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         signIn.setForeground(new java.awt.Color(255, 255, 255));
         signIn.setText("Login");
@@ -168,7 +168,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

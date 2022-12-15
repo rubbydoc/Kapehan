@@ -177,8 +177,8 @@ public class Products extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
-        addCoffee.setBackground(new java.awt.Color(168, 104, 11));
-        addCoffee.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        addCoffee.setBackground(new java.awt.Color(150, 112, 64));
+        addCoffee.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
         addCoffee.setForeground(new java.awt.Color(255, 255, 255));
         addCoffee.setText("Add Coffee");
         addCoffee.addActionListener(new java.awt.event.ActionListener() {
@@ -187,8 +187,8 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
-        edit.setBackground(new java.awt.Color(168, 104, 11));
-        edit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        edit.setBackground(new java.awt.Color(150, 112, 64));
+        edit.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
         edit.setForeground(new java.awt.Color(255, 255, 255));
         edit.setText("Update");
         edit.addActionListener(new java.awt.event.ActionListener() {
@@ -215,8 +215,8 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(52, 32, 0));
-        jButton8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        jButton8.setBackground(new java.awt.Color(150, 112, 64));
+        jButton8.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Refresh");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -225,17 +225,22 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("DialogInput", 1, 14)); // NOI18N
         jLabel5.setText("Search Product");
 
+        jLabel6.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
         jLabel6.setText("Product Name");
 
+        jLabel7.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
         jLabel7.setText("Description");
 
+        jLabel8.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
         jLabel8.setText("Price");
 
+        jLabel9.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
         jLabel9.setText("Category");
 
+        jLabel12.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
         jLabel12.setText("Status");
 
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "available", "not available" }));
@@ -296,8 +301,8 @@ public class Products extends javax.swing.JFrame {
                 .addGap(150, 150, 150))
         );
 
-        jButton6.setBackground(new java.awt.Color(168, 104, 11));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jButton6.setBackground(new java.awt.Color(150, 112, 64));
+        jButton6.setFont(new java.awt.Font("DialogInput", 1, 15)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Delete");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +312,7 @@ public class Products extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(52, 32, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        jButton2.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +321,7 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DialogInput", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(168, 104, 11));
         jLabel2.setText("PRODUCTS");
 
@@ -341,9 +346,9 @@ public class Products extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(142, 142, 142)
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel2)
+                                .addGap(127, 127, 127)
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -368,10 +373,9 @@ public class Products extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
