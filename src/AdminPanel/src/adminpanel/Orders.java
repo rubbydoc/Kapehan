@@ -38,6 +38,7 @@ public class Orders extends javax.swing.JFrame {
     String time;
     String date;
     String d;
+    String stat;
 
     public Orders() {
         initComponents();
@@ -69,6 +70,7 @@ public class Orders extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         jButton4.setText("CHANGE PASSWORD");
@@ -131,7 +133,7 @@ public class Orders extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Customer", "Product", "Price", "Qty", "Total", "Date", "Payment Method", "Mode", "Status"
+                "Order ID", "Customer", "Product", "Price", "Qty", "Total", "Date", "Payment Method", "Mode", "Status"
             }
         ));
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,15 +143,15 @@ public class Orders extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(300);
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(800);
-            jTable2.getColumnModel().getColumn(1).setPreferredWidth(250);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(200);
             jTable2.getColumnModel().getColumn(1).setMaxWidth(800);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(3).setPreferredWidth(90);
-            jTable2.getColumnModel().getColumn(3).setMaxWidth(800);
-            jTable2.getColumnModel().getColumn(4).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(5).setPreferredWidth(200);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(250);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(800);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(90);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(800);
+            jTable2.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(6).setPreferredWidth(200);
         }
 
         jButton8.setText("Refresh");
@@ -164,8 +166,25 @@ public class Orders extends javax.swing.JFrame {
 
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pending", "completed" }));
         status.setSelectedIndex(-1);
+        status.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                statusMouseClicked(evt);
+            }
+        });
+        status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Status");
+
+        jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -174,19 +193,21 @@ public class Orders extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(295, 295, 295)
-                                .addComponent(jButton8))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(jLabel2)
                         .addGap(62, 62, 62)
-                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(295, 295, 295)
+                                .addComponent(jButton8)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +221,8 @@ public class Orders extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -232,100 +254,130 @@ public class Orders extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+//
+//    public void log(String s) {
+//
+//        try {
+//            int row = jTable2.getSelectedRow();
+//            PreparedStatement p = c.connect().prepareStatement("INSERT INTO activity_log(employeeID, description) VALUES (?,?)");
+//
+//            p.setInt(1,new Login().id);
+//            p.setString(2, s);
+//
+//            p.executeUpdate();
+//            c.connect().close();
+//
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//
+//    }
 
-    public void log(String s) {
+//    public void ED(String s, String sp) {
+//
+//        if (jTable2.getSelectedRowCount() > 0) {
+//            int row = jTable2.getSelectedRow();
+//            String id = jTable2.getModel().getValueAt(row, 0).toString();
+//            String q = jTable2.getModel().getValueAt(row, 5).toString();
+//
+//            try {
+//
+//                PreparedStatement ps = c.connect().prepareStatement("UPDATE products SET status=? WHERE productID=? ");
+//                ps.setString(1, s);
+//                ps.setString(2, id);
+//                ps.executeUpdate();
+//
+//                PreparedStatement p = c.connect().prepareStatement("INSERT INTO activity_log(employeeID, description) VALUES (?,?)");
+//
+//                p.setInt(1, new Login().id);
+//                p.setString(2, sp + jTable2.getModel().getValueAt(row, 1).toString());
+//
+//                p.executeUpdate();
+//
+//                c.connect().close();
+//            } catch (SQLException e) {
+//                System.out.println(e);
+//            }
+//
+//        }
+//        selectProduct();
+//    }
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        selectProduct();
+        status.setSelectedIndex(-1);
 
-        try {
-            int row = jTable2.getSelectedRow();
-            PreparedStatement p = c.connect().prepareStatement("INSERT INTO activity_log(employeeID, description) VALUES (?,?)");
 
-            p.setInt(1,new Login().id);
-            p.setString(2, s);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
-            p.executeUpdate();
-            c.connect().close();
+//    public void query(String s) {
+//        try {
+//
+//            Statement stmt = c.connect().createStatement();
+//            ResultSet rs = stmt.executeQuery(s);
+//            DefaultTableModel tm = (DefaultTableModel) jTable2.getModel();
+//            tm.setRowCount(0);
+//
+//            while (rs.next()) {
+//                Object o[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
+//                tm.addRow(o);
+//
+//            }
+//            c.connect().close();
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//
+//    }
 
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int row = jTable2.getSelectedRow();
 
-    }
+        status.setSelectedItem(jTable2.getModel().getValueAt(row, 9).toString());
 
-    public void ED(String s, String sp) {
+    }//GEN-LAST:event_jTable2MouseClicked
 
+    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
+
+
+    }//GEN-LAST:event_statusActionPerformed
+
+    private void statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statusMouseClicked
+
+    }//GEN-LAST:event_statusMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jTable2.getSelectedRowCount() > 0) {
+
+            stat = status.getSelectedItem().toString();
             int row = jTable2.getSelectedRow();
             String id = jTable2.getModel().getValueAt(row, 0).toString();
-            String q = jTable2.getModel().getValueAt(row, 5).toString();
 
             try {
 
-                PreparedStatement ps = c.connect().prepareStatement("UPDATE products SET status=? WHERE productID=? ");
-                ps.setString(1, s);
+                PreparedStatement ps = c.connect().prepareStatement("UPDATE transactions SET status=? WHERE transactionID=? ");
+                ps.setString(1, stat);
                 ps.setString(2, id);
                 ps.executeUpdate();
-
-                PreparedStatement p = c.connect().prepareStatement("INSERT INTO activity_log(employeeID, description) VALUES (?,?)");
-
-                p.setInt(1, new Login().id);
-                p.setString(2, sp + jTable2.getModel().getValueAt(row, 1).toString());
-
-                p.executeUpdate();
-
                 c.connect().close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
+            selectProduct();
 
         }
-        selectProduct();
-    }
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        selectProduct();
-       status.setSelectedIndex(-1);
-     
-
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    public void query(String s) {
-        try {
-
-            Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery(s);
-            DefaultTableModel tm = (DefaultTableModel) jTable2.getModel();
-            tm.setRowCount(0);
-
-            while (rs.next()) {
-                Object o[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
-                tm.addRow(o);
-
-            }
-            c.connect().close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-    }
-
-
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        int row = jTable2.getSelectedRow();
-      
-        status.setSelectedItem(jTable2.getModel().getValueAt(row, 8).toString());
-
-    }//GEN-LAST:event_jTable2MouseClicked
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void selectProduct() {
 
         try {
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from transactions");
+            ResultSet rs = stmt.executeQuery("select transactionID, b.fullName, a.productName, price, qty, total, date, paymentMethod, mode, a.status from transactions as a join customers as b on a.customerID = b.customerID");
             DefaultTableModel tm = (DefaultTableModel) jTable2.getModel();
             tm.setRowCount(0);
 
             while (rs.next()) {
-                Object o[] = {rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),  rs.getString(8),  rs.getString(9), rs.getString(10)};
+                Object o[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)};
                 tm.addRow(o);
 //                d = rs.getString(8);
 
@@ -380,6 +432,7 @@ public class Orders extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
