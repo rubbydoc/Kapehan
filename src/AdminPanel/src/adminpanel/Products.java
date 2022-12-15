@@ -149,7 +149,7 @@ public class Products extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
