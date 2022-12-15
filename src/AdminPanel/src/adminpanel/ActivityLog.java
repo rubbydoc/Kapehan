@@ -248,6 +248,7 @@ public class ActivityLog extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 //    private static long idCounter = 1;
