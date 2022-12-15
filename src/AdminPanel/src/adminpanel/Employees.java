@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author student.admin
  */
-public class Products extends javax.swing.JFrame {
+public class Employees extends javax.swing.JFrame {
 
     Connect c = new Connect();
     String value;
@@ -39,9 +39,9 @@ public class Products extends javax.swing.JFrame {
     String date;
     String d;
 
-    public Products() {
+    public Employees() {
         initComponents();
-        selectProduct();
+        selectEmployees();
         target.setText(new Login().name);
         role.setText(new Login().role);
 
@@ -65,24 +65,25 @@ public class Products extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        addCoffee = new javax.swing.JButton();
+        addAdmin = new javax.swing.JButton();
         edit = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        search = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        prodName = new javax.swing.JTextField();
-        des = new javax.swing.JTextField();
-        price = new javax.swing.JTextField();
+        fullName = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
-        category = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        rol = new javax.swing.JComboBox<>();
+        delete = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         jButton4.setText("CHANGE PASSWORD");
@@ -125,7 +126,7 @@ public class Products extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(12, 12, 12)
                 .addComponent(role)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1292, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +146,7 @@ public class Products extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductID", "Product", "Description", "Price", "Category", "Status"
+                "ID", "Full Name", "Email", "Password", "Role", "Date Created", "Status"
             }
         ));
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,22 +156,24 @@ public class Products extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(800);
-            jTable2.getColumnModel().getColumn(1).setPreferredWidth(250);
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(200);
             jTable2.getColumnModel().getColumn(1).setMaxWidth(800);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(400);
-            jTable2.getColumnModel().getColumn(3).setPreferredWidth(90);
-            jTable2.getColumnModel().getColumn(3).setMaxWidth(800);
-            jTable2.getColumnModel().getColumn(4).setPreferredWidth(100);
-            jTable2.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(200);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(800);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(200);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(800);
+            jTable2.getColumnModel().getColumn(5).setPreferredWidth(200);
+            jTable2.getColumnModel().getColumn(6).setPreferredWidth(100);
         }
 
-        addCoffee.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        addCoffee.setText("Add Coffee");
-        addCoffee.addActionListener(new java.awt.event.ActionListener() {
+        addAdmin.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        addAdmin.setText("Add Admin");
+        addAdmin.setActionCommand("Add Admin");
+        addAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCoffeeActionPerformed(evt);
+                addAdminActionPerformed(evt);
             }
         });
 
@@ -182,21 +185,21 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addCaretListener(new javax.swing.event.CaretListener() {
+        search.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField1CaretUpdate(evt);
+                searchCaretUpdate(evt);
             }
         });
-        jTextField1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        search.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTextField1InputMethodTextChanged(evt);
+                searchInputMethodTextChanged(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchActionPerformed(evt);
             }
         });
 
@@ -207,23 +210,23 @@ public class Products extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Search Product");
+        jLabel5.setText("Search");
 
-        jLabel6.setText("Product Name");
+        jLabel6.setText("Full Name");
 
-        jLabel7.setText("Description");
+        jLabel7.setText("Email");
 
-        jLabel8.setText("Price");
+        jLabel8.setText("Password");
 
-        jLabel9.setText("Category");
+        jLabel9.setText("Role");
 
         jLabel12.setText("Status");
 
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "available", "not available" }));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "active", "inactive" }));
         status.setSelectedIndex(-1);
 
-        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hot", "Iced" }));
-        category.setSelectedIndex(-1);
+        rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Staff" }));
+        rol.setSelectedIndex(-1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -241,14 +244,14 @@ public class Products extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(des, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prodName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fullName, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(category, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(10, 10, 10))
         );
         jPanel3Layout.setVerticalGroup(
@@ -256,20 +259,20 @@ public class Products extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prodName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fullName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(des, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -277,18 +280,21 @@ public class Products extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jButton6.setText("Delete");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        delete.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                deleteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Employees");
+
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -305,41 +311,47 @@ public class Products extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 101, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(addCoffee)
+                        .addComponent(addAdmin)
                         .addGap(30, 30, 30)
                         .addComponent(edit)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6)
+                        .addComponent(delete)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
+                        .addComponent(jLabel1)
+                        .addGap(216, 216, 216)
                         .addComponent(jButton8)
                         .addGap(119, 119, 119)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(116, 116, 116))))
+                        .addComponent(jButton1)
+                        .addGap(314, 314, 314))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8)
+                            .addComponent(jLabel5)
+                            .addComponent(jButton1)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton2))
-                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addCoffee, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56))
         );
 
@@ -372,31 +384,30 @@ public class Products extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void addCoffeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCoffeeActionPerformed
-        String prod = prodName.getText();
-        String desc = des.getText();
-        String pr = price.getText();
-        int cat = category.getSelectedIndex();
+    private void addAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdminActionPerformed
+        String name = fullName.getText();
+        String mail = email.getText();
+        String pass = password.getText();
+        int ro = rol.getSelectedIndex();
         int st = status.getSelectedIndex();
 
-        if (prod.equals("") || desc.equals("") || pr.equals("") || cat == -1 || st == -1) {
+        if (name.equals("") || mail.equals("") || pass.equals("") || ro == -1 || st == -1) {
 
             JOptionPane.showMessageDialog(null, "Empty fields.");
 
         } else {
 
             try {
-                PreparedStatement ps = c.connect().prepareStatement("INSERT INTO products(productName, description, price, category, status) VALUES (?,?,?,?,?)");
+                PreparedStatement ps = c.connect().prepareStatement("INSERT INTO employees(fullName, email, password, role, status) VALUES (?,?,?,?,?)");
 
-                ps.setString(1, prodName.getText());
-                ps.setString(2, des.getText());
-                ps.setString(3, price.getText());
-                ps.setString(4, category.getSelectedItem().toString());
-                ps.setString(5, "available");
+                ps.setString(1, fullName.getText());
+                ps.setString(2, email.getText());
+                ps.setString(3, password.getText());
+                ps.setString(4, rol.getSelectedItem().toString());
+                ps.setString(5, "active");
 
                 ps.executeUpdate();
-                selectProduct();
-                String id = jTable2.getModel().getValueAt(jTable2.getModel().getRowCount() - 1, 0).toString();
+                selectEmployees();
 //
 //            PreparedStatement p = c.connect().prepareStatement("INSERT INTO transactions(customerID, productName, price, qty, total, paymentMethod, mode) VALUES (?,?,?,?,?,?)");
 //
@@ -409,7 +420,7 @@ public class Products extends javax.swing.JFrame {
 //
 //            p.executeUpdate();
 
-                log("Added a coffee - " + prodName.getText());
+                log("Added a new admin");
                 c.connect().close();
 
             } catch (SQLException ex) {
@@ -417,7 +428,7 @@ public class Products extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_addCoffeeActionPerformed
+    }//GEN-LAST:event_addAdminActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
 
@@ -426,33 +437,33 @@ public class Products extends javax.swing.JFrame {
 
             try {
 
-                PreparedStatement ps = c.connect().prepareStatement("UPDATE products SET productName=?,description=?,price=?,category=?,status=? WHERE productID=? ");
-                ps.setString(1, prodName.getText());
-                ps.setString(2, des.getText());
-                ps.setString(3, price.getText());
-                ps.setString(4, category.getSelectedItem().toString());
+                PreparedStatement ps = c.connect().prepareStatement("UPDATE employees SET fullName=?,email=?,password=?,role=?,status=? WHERE employeeID=? ");
+                ps.setString(1, fullName.getText());
+                ps.setString(2, email.getText());
+                ps.setString(3, password.getText());
+                ps.setString(4, rol.getSelectedItem().toString());
                 ps.setString(5, status.getSelectedItem().toString());
 
                 ps.setString(6, jTable2.getModel().getValueAt(row, 0).toString());
 
                 ps.executeUpdate();
-                if (prodName.getText().equals(jTable2.getModel().getValueAt(row, 1).toString()) == false) {
-                    log("Edited the product name of " + jTable2.getModel().getValueAt(row, 1).toString());
+                if (fullName.getText().equals(jTable2.getModel().getValueAt(row, 1).toString()) == false) {
+                    log("Edited the name of " + jTable2.getModel().getValueAt(row, 1).toString());
 
                 }
-                if (des.getText().equals(jTable2.getModel().getValueAt(row, 2).toString()) == false) {
-                    log("Edited the description of " + jTable2.getModel().getValueAt(row, 1).toString());
+                if (email.getText().equals(jTable2.getModel().getValueAt(row, 2).toString()) == false) {
+                    log("Edited the email of " + jTable2.getModel().getValueAt(row, 1).toString());
 
                 }
-                if (price.getText().equals(jTable2.getModel().getValueAt(row, 3).toString()) == false) {
-                    log("Edited the price of " + jTable2.getModel().getValueAt(row, 1).toString());
+                if (password.getText().equals(jTable2.getModel().getValueAt(row, 3).toString()) == false) {
+                    log("Edited the password of " + jTable2.getModel().getValueAt(row, 1).toString());
 
                 }
-                if (category.getSelectedItem().toString().equals(jTable2.getModel().getValueAt(row, 4).toString()) == false) {
-                    log("Edited the category of " + jTable2.getModel().getValueAt(row, 1).toString());
+                if (rol.getSelectedItem().toString().equals(jTable2.getModel().getValueAt(row, 4).toString()) == false) {
+                    log("Edited the role of " + jTable2.getModel().getValueAt(row, 1).toString());
 
                 }
-                if (status.getSelectedItem().toString().equals(jTable2.getModel().getValueAt(row, 5).toString()) == false) {
+                if (status.getSelectedItem().toString().equals(jTable2.getModel().getValueAt(row, 6).toString()) == false) {
                     log("Edited the status of " + jTable2.getModel().getValueAt(row, 1).toString());
 
                 }
@@ -463,7 +474,7 @@ public class Products extends javax.swing.JFrame {
 
         }
 
-        selectProduct();
+        selectEmployees();
 
     }//GEN-LAST:event_editActionPerformed
 
@@ -512,20 +523,21 @@ public class Products extends javax.swing.JFrame {
             }
 
         }
-        selectProduct();
+        selectEmployees();
     }
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        selectProduct();
-        addCoffee.setEnabled(true);
+        selectEmployees();
+        addAdmin.setEnabled(true);
+        search.setText("");
 
-        prodName.setText("");
-        des.setText("");
-        price.setText("");
-        category.setSelectedIndex(-1);
+        fullName.setText("");
+        email.setText("");
+        password.setText("");
+        rol.setSelectedIndex(-1);
         status.setSelectedIndex(-1);
 
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -550,67 +562,70 @@ public class Products extends javax.swing.JFrame {
 
     }
 
-    private void jTextField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1CaretUpdate
-        String val = jTextField1.getText();
+    private void searchCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_searchCaretUpdate
+        String val = search.getText();
 
-        query("select * from products where productName LIKE " + "'" + val + "%'");
-    }//GEN-LAST:event_jTextField1CaretUpdate
+        query("select * from employees where fullName LIKE " + "'" + val + "%'");
+    }//GEN-LAST:event_searchCaretUpdate
 
 
-    private void jTextField1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField1InputMethodTextChanged
+    private void searchInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_searchInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1InputMethodTextChanged
+    }//GEN-LAST:event_searchInputMethodTextChanged
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-
-        addCoffee.setEnabled(false);
         int row = jTable2.getSelectedRow();
-        prodName.setText(jTable2.getModel().getValueAt(row, 1).toString());
-        des.setText(jTable2.getModel().getValueAt(row, 2).toString());
-        price.setText(jTable2.getModel().getValueAt(row, 3).toString());
-        category.setSelectedItem(jTable2.getModel().getValueAt(row, 4).toString());
-        status.setSelectedItem(jTable2.getModel().getValueAt(row, 5).toString());
+        fullName.setText(jTable2.getModel().getValueAt(row, 1).toString());
+        email.setText(jTable2.getModel().getValueAt(row, 2).toString());
+        password.setText(jTable2.getModel().getValueAt(row, 3).toString());
+        rol.setSelectedItem(jTable2.getModel().getValueAt(row, 4).toString());
+        status.setSelectedItem(jTable2.getModel().getValueAt(row, 6).toString());
+
+        if (jTable2.getSelectedRowCount() > 0) {
+
+            addAdmin.setEnabled(false);
+        }
 
     }//GEN-LAST:event_jTable2MouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         if (jTable2.getSelectedRowCount() > 0) {
             int row = jTable2.getSelectedRow();
             String id = jTable2.getModel().getValueAt(row, 0).toString();
             try {
 
-                PreparedStatement ps = c.connect().prepareStatement("DELETE FROM products WHERE productID=?");
+                PreparedStatement ps = c.connect().prepareStatement("DELETE FROM employees WHERE employeeID=?");
                 ps.setString(1, id);
 
                 ps.executeUpdate();
 
-                log("Deleted " + jTable2.getModel().getValueAt(row, 1).toString());
+                log("Deleted employee - " + jTable2.getModel().getValueAt(row, 1).toString());
 
                 c.connect().close();
             } catch (SQLException e) {
                 System.out.println(e);
             }
 
-            selectProduct();
+            selectEmployees();
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_deleteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         new Dashboard().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void selectProduct() {
+    public void selectEmployees() {
 
         try {
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from products");
+            ResultSet rs = stmt.executeQuery("select * from employees");
             DefaultTableModel tm = (DefaultTableModel) jTable2.getModel();
             tm.setRowCount(0);
 
             while (rs.next()) {
-                Object o[] = {rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
+                Object o[] = {rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)};
                 tm.addRow(o);
 //                d = rs.getString(8);
 
@@ -639,14 +654,18 @@ public class Products extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -655,21 +674,22 @@ public class Products extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Products().setVisible(true);
+                new Employees().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addCoffee;
-    private javax.swing.JComboBox<String> category;
-    private javax.swing.JTextField des;
+    private javax.swing.JButton addAdmin;
+    private javax.swing.JButton delete;
     private javax.swing.JButton edit;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fullName;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -682,10 +702,10 @@ public class Products extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField price;
-    private javax.swing.JTextField prodName;
+    private javax.swing.JTextField password;
+    private javax.swing.JComboBox<String> rol;
     private javax.swing.JLabel role;
+    private javax.swing.JTextField search;
     private javax.swing.JComboBox<String> status;
     private javax.swing.JLabel target;
     // End of variables declaration//GEN-END:variables
