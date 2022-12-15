@@ -31,7 +31,12 @@ public class ProductInfo extends javax.swing.JFrame {
         setBackground(new Color(0, 0, 0, 0));
         body.setBackground(new Color(0, 0, 0, 0));
 
-        target.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Home().getImgSource())));
+        try {
+            target.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Home().getImgSource())));
+        } catch (Exception e) {
+            target.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Home().getIMGS())));
+
+        }
         prodName.setText(new Home().getProductName());
 //        cartNum.setText(String.valueOf(new Home().getNumCart()));
         description.setText("<html>" + new Home().getProductDescription() + "</html>");

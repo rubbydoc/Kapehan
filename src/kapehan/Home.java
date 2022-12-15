@@ -37,6 +37,7 @@ public class Home extends javax.swing.JFrame {
      * Creates new form page2
      */
     static String imgSource;
+    static String imgs;
     static String productName;
     static String productDes;
     static String productPrice;
@@ -56,6 +57,10 @@ public class Home extends javax.swing.JFrame {
 
     public static String getImgSource() {
         return imgSource;
+    }
+    
+     public static String getIMGS() {
+        return imgs;
     }
 
     public static String getProductName() {
@@ -438,14 +443,19 @@ public class Home extends javax.swing.JFrame {
 
         JLabel img = new javax.swing.JLabel();
 
-        img.setIcon(new javax.swing.ImageIcon(getClass().getResource(imgsource))); // NOI18N
+        try {
+            img.setIcon(new javax.swing.ImageIcon(getClass().getResource(imgsource))); // NOI18N
+        } catch (Exception e) {
+            img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/coffee/img.png"))); // NOI18N
 
+        }
         img.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         img.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 
                 imgSource = "/img/coffee/" + name + "_info" + ".png";
+                imgs = "/img/coffee/img_info.png";
                 productName = name;
                 productDes = description;
                 productPrice = price;
@@ -489,13 +499,19 @@ public class Home extends javax.swing.JFrame {
         panel.add(pr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
         JLabel img = new javax.swing.JLabel();
 
-        img.setIcon(new javax.swing.ImageIcon(getClass().getResource(imgsource))); // NOI18N
+        try {
+            img.setIcon(new javax.swing.ImageIcon(getClass().getResource(imgsource))); // NOI18N
+        } catch (Exception e) {
+            img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/coffee/img.png"))); // NOI18N
 
+        }
         img.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         img.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 imgSource = "/img/coffee/" + name + "_info" + ".png";
+                imgs = "/img/coffee/img_info.png";
+
                 productName = name;
                 productDes = description;
                 productPrice = price;
