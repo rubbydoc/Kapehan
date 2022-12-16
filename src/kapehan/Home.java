@@ -276,7 +276,7 @@ public class Home extends javax.swing.JFrame {
                 int l = 40;
 
                 Statement stmt = c.connect().createStatement();
-                ResultSet rs = stmt.executeQuery("select * from products where status='available' and productName LIKE'" + search + "%'");
+                ResultSet rs = stmt.executeQuery("select * from products where status='available' and productName LIKE '" + search + "%'");
 
                 while (rs.next()) {
                     String productName = rs.getString(2);

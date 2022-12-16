@@ -7,6 +7,7 @@ package adminpanel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         getIncome();
         getTotalUser();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -78,18 +80,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("TOTAL USERS");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 370, -1, -1));
+        jLabel3.setText("TOTAL CUSTOMERS");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, -1, -1));
 
         totalcust.setFont(new java.awt.Font("Dialog", 1, 42)); // NOI18N
         totalcust.setForeground(new java.awt.Color(157, 91, 20));
+        totalcust.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalcust.setText("30");
-        jPanel1.add(totalcust, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, 70, 50));
+        jPanel1.add(totalcust, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, 70, 50));
 
         totalincome.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         totalincome.setForeground(new java.awt.Color(123, 57, 42));
+        totalincome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalincome.setText("$1000.00");
-        jPanel1.add(totalincome, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, 40));
+        jPanel1.add(totalincome, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, -1, 40));
 
         jPanel2.setBackground(new java.awt.Color(150, 112, 64));
         jPanel2.setPreferredSize(new java.awt.Dimension(390, 5));
@@ -280,7 +284,7 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,8 +363,15 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        this.dispose();
-        new Employees().setVisible(true);
+        if (Login.role.equals("Staff")) {
+                        JOptionPane.showMessageDialog(null, "You are not allowed! Mapriso ka. Aguy!");
+
+        } else {
+            this.dispose();
+            new Employees().setVisible(true);
+        }
+
+
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked

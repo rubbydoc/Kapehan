@@ -241,9 +241,15 @@ public class SignIn extends javax.swing.JFrame {
                     custID = rs.getInt(1);
                     custName = rs.getString(2);
                     this.dispose();
-                    new Home().setVisible(true);break;
+                    new Home().setVisible(true);
+                    break;
+                }  else if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(5)) & rs.getString(8).equals("inactive")) {
+//                  
+                    JOptionPane.showMessageDialog(null, "This account is not active!");
+
+                    break;
                 } else {
-                   
+
                     notMatch = true;
                 }
 
@@ -252,9 +258,9 @@ public class SignIn extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
-        if(notMatch==true){
-         JOptionPane.showMessageDialog(null, "Incorect credentials!");
+
+        if (notMatch == true) {
+            JOptionPane.showMessageDialog(null, "Incorect credentials!");
         }
     }//GEN-LAST:event_signInActionPerformed
 

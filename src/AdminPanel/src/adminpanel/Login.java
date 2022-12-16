@@ -195,7 +195,7 @@ public class Login extends javax.swing.JFrame {
 
             while (rs.next()) {
 
-                if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(4)) & rs.getString(7).equals("active") ) {
+                if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(4)) & rs.getString(7).equals("active")) {
                     //
                     notMatch = false;
                     id = rs.getInt(1);
@@ -204,8 +204,19 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                     new Dashboard().setVisible(true);
                     break;
-                } 
-                 else {
+                } else if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(4)) & rs.getString(7).equals("to be approved")) {
+                    //
+                    notMatch = false;
+
+                    JOptionPane.showMessageDialog(null, "Your account has not yet been approved!");
+
+                } else if (mail.equals(rs.getString(3)) & pass.equals(rs.getString(4)) & rs.getString(7).equals("inactive")) {
+                    //
+                    notMatch = false;
+
+                    JOptionPane.showMessageDialog(null, "This account is no longer active!");
+
+                } else {
 
                     notMatch = true;
                 }

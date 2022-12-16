@@ -271,7 +271,7 @@ public class Account extends javax.swing.JFrame {
                 PreparedStatement ps = c.connect().prepareStatement("UPDATE customers SET status=? WHERE customerID=?");
                 ps.setString(1, "inactive");
 
-                ps.setInt(5, new SignIn().custID);
+                ps.setInt(2, new SignIn().custID);
 
                 ps.executeUpdate();
 

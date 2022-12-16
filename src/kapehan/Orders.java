@@ -83,6 +83,7 @@ public class Orders extends javax.swing.JFrame {
         total = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        statu = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -122,13 +123,13 @@ public class Orders extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Coffee", "Price", "Qty", "Total", "Date"
+                "Coffee", "Price", "Qty", "Total", "Date", "Status"
             }
         ));
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -163,6 +164,10 @@ public class Orders extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Total");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, -1, -1));
+
+        statu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        statu.setText("pending");
+        jPanel3.add(statu, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 660, 110, -1));
 
         jScrollPane2.setViewportView(jPanel3);
 
@@ -225,12 +230,12 @@ public class Orders extends javax.swing.JFrame {
         try {
 
             Statement stmt = c.connect().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from transactions where customerID='"+new SignIn().custID+"'");
+            ResultSet rs = stmt.executeQuery("select * from transactions where customerID='" + new SignIn().custID + "'");
             DefaultTableModel tm = (DefaultTableModel) jTable1.getModel();
             tm.setRowCount(0);
 
             while (rs.next()) {
-                Object o[] = {rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)};
+                Object o[] = {rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(10)};
                 tm.addRow(o);
 
             }
@@ -253,13 +258,14 @@ public class Orders extends javax.swing.JFrame {
         String qt = jTable1.getModel().getValueAt(row, 2).toString();
         String tot = jTable1.getModel().getValueAt(row, 3).toString();
         String dat = jTable1.getModel().getValueAt(row, 4).toString();
-        
+        String stat = jTable1.getModel().getValueAt(row, 5).toString();
+
         date.setText(dat);
         product.setText(pro);
-        price.setText("$"+pr);
+        price.setText("$" + pr);
         qty.setText(qt);
-        total.setText("$"+tot);
-        
+        total.setText("$" + tot);
+        statu.setText("$" + stat);
 
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -347,6 +353,7 @@ public class Orders extends javax.swing.JFrame {
     private javax.swing.JLabel price;
     private javax.swing.JLabel product;
     private javax.swing.JLabel qty;
+    private javax.swing.JLabel statu;
     private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 
